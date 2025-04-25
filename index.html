@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <title>Snake game</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div class="instructions-container">
+        <button id="instructions-btn">
+            <span class="instructions-btn-text">Voir les instructions</span>
+            <span class="instructions-btn-arrow">﹀</span>
+          </button>
+        <ul id="instructions-text">
+            <li>Appuyer sur espace pour commencer.</li>
+            <li>Utiliser les flèches multidirectionnelles pour contrôler le serpent et attraper les pommes.</li>
+            <li><img src="food.png"> indique le score actuel</li>
+            <li><span>🏆</span> indique le meilleur score sur les parties précédentes</li>
+        </ul>
+    </div>
+    
+    <div class="game">
+        <div class="scores">
+            <div>
+                <img src="food.png">
+                <span id="score">000</span>
+            </div>
+            <div>
+                <span>🏆</span>
+                <span id="best-score">000</span>
+            </div>
+        </div>
+        
+        <div id="board-container">  
+            <div id="presentation-screen">
+                <h3>Appuyez sur espace pour <br>commencer</h3>
+            </div>          
+            <div id="board">                
+                <!-- la div board-visual-grid en position absolute permet d'avoir un visuel du grid sans devoir créer de cellule dans la div board elle-même-->
+                <div id="board-visual-grid"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,236 @@
+*, *::before, *::after{
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0;
+    font-family: "Press Start 2P", system-ui;
+    display: flex;
+    justify-content: space-evenly;
+    min-height: 100vh;
+    background-color: rgb(213, 203, 190);
+}
+
+@media (max-width: 1270px){
+    body{
+        
+        flex-wrap: wrap;        
+    }   
+}
+
+.instructions-container{
+    max-width: 500px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+#instructions-btn{
+    font-family: "Press Start 2P", system-ui;
+    font-size: 1rem;
+    cursor: pointer;
+    border: none;
+    background-color: #000;
+    color: #d6831a;
+    width: 460px;
+    padding-block: 0.5em;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+.instructions-btn-arrow {
+    font-weight: bold;
+    display: inline-block;
+    line-height: 1;
+    transition: transform 0.3s ease;
+}
+
+#instructions-btn.open .instructions-btn-arrow {
+    transform: rotate(180deg);
+}
+
+#instructions-btn:hover{
+    background-color: #d6831a;
+    color: #000;
+}
+
+#instructions-text{
+    display: none;
+    list-style: square;
+    padding-left: 10px;
+    max-width: 500px;
+}
+
+#instructions-text li{
+    margin-bottom: 15px;
+    line-height: 1.5;
+    color: black;
+}
+
+#instructions-text li img{
+    display: inline-block;
+    width: 26px;
+}
+
+#instructions-text li span{
+    font-size: 20px;
+}
+
+@media (max-width: 505px){
+    #instructions-btn{
+        font-family: "Press Start 2P", system-ui;
+        font-size: 0.7rem;
+        width: 330px;
+        padding-block: 0.5em;
+    }
+
+    #instructions-text{
+        font-size: 0.7rem;
+    }    
+}
+
+.scores{
+    display: flex;
+    justify-content: space-between;
+    color:#d6831a;
+    font-size: 40px;
+    margin-bottom: 5px;
+}
+
+.scores div{
+    display: flex;
+    align-items:end;
+    gap: 10px;
+}
+
+.scores div img{
+    display: inline-block;
+    width: 55px;
+}
+
+@media (max-width: 400px){
+    .scores{
+        font-size: 20px;
+    }
+    .scores div img{
+        width: 28px;
+    }
+}
+
+@media (min-width: 401px) and (max-width: 600px){
+    .scores{
+        font-size: 30px;
+    }
+    .scores div img{
+        width: 41px;
+    }
+}
+
+.game{
+    margin-block: 10px 20px;
+}
+
+#board-container{
+    position: relative;
+    background:  url('bg.png') center no-repeat;
+    background-size: contain;
+    max-width: 800px; 
+    max-height: 800px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#board{
+    position: relative;
+    width: 69.15%;
+    height: 69.15%;
+    display: grid;
+    border: 12px solid #2a5520;
+}
+
+@media (max-width: 600px){
+    #board{
+        width: 69.2%;
+        height: 69.2%;
+        border: 8px solid #2a5520;
+    }
+}
+
+#presentation-screen{
+    position: absolute;
+    background: url('image-presentation.png') center no-repeat;
+    background-size: contain;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(72, 95, 59);
+    z-index: 1;
+}
+
+h3{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    color: #fff;
+    font-size: 8px;
+    text-align: center;
+    line-height: 1.5;
+    margin-bottom: 4px;
+}
+
+@media (min-width: 430px){
+    h3{
+        font-size: 10px;
+    }
+}
+
+@media (min-width: 500px){
+    h3{
+        font-size: 14px;
+    }
+}
+
+@media (min-width: 600px){
+    h3{
+        font-size: 18px;
+    }
+}
+
+@media (min-width: 700px){
+    h3{
+        font-size: 22px;
+    }
+}
+
+@media (min-width: 830px){
+    h3{
+        font-size: 28px;
+        margin-bottom: 10px;
+    }
+}
+
+#board-visual-grid{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: grid;
+}
+
+.cell{
+    width: 100%;
+    aspect-ratio: 1/1;
+    background-color: transparent;
+    border: 1px solid rgba(87, 99, 80, 0.15);
+}
+
+.snake-head{
+    background: url('snake.png') center no-repeat;
+    background-size: contain;
+}
