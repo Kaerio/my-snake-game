@@ -9,14 +9,14 @@ body{
     justify-content: space-evenly;
     min-height: 100vh;
     background-color: rgb(213, 203, 190);
+    flex-wrap: wrap;
 }
 
-@media (max-width: 1270px){
-    body{
-        
+/* @media (max-width: 1350px){
+    body{        
         flex-wrap: wrap;        
     }   
-}
+} */
 
 .instructions-container{
     max-width: 500px;
@@ -130,18 +130,21 @@ body{
 }
 
 .game{
-    margin-block: 10px 20px;
+    margin-block: 20px 10px;
 }
 
 #board-container{
     position: relative;
     background:  url('bg.png') center no-repeat;
     background-size: contain;
-    max-width: 800px; 
-    max-height: 800px; 
+    aspect-ratio: 1/1;
     display: flex;
     align-items: center;
     justify-content: center;
+    max-height: calc(100vh - 150px);
+    max-width: calc(100vh - 150px);
+    width: auto;
+    height: auto;
 }
 
 #board{
@@ -152,15 +155,16 @@ body{
     border: 12px solid #2a5520;
 }
 
-@media (max-width: 600px){
+/* @media (max-width: 600px){
     #board{
         width: 69.2%;
         height: 69.2%;
         border: 8px solid #2a5520;
     }
-}
+} */
 
 #presentation-screen{
+    /* display: none; */
     position: absolute;
     background: url('image-presentation.png') center no-repeat;
     background-size: contain;
@@ -230,7 +234,35 @@ h3{
     border: 1px solid rgba(87, 99, 80, 0.15);
 }
 
-.snake-head{
+.snake-body{
+    background: #207325;
+}
+
+.snake-head-down{
     background: url('snake.png') center no-repeat;
+    background-size: contain;
+    /* border: 1px solid rgba(87, 99, 80, 0.15); */
+}
+.snake-head-up{
+    background: url('snake.png') center no-repeat;
+    background-size: contain;
+    transform: rotate(180deg);
+    /* border: 1px solid rgba(87, 99, 80, 0.15); */
+}
+.snake-head-right{
+    background: url('snake.png') center no-repeat;
+    background-size: contain;
+    transform: rotate(-90deg);
+    /* border: 1px solid rgba(87, 99, 80, 0.15); */
+}
+.snake-head-left{
+    background: url('snake.png') center no-repeat;
+    background-size: contain;
+    transform: rotate(90deg);
+    /* border: 1px solid rgba(87, 99, 80, 0.15); */
+}
+
+.food{
+    background: url('food.png') center no-repeat;
     background-size: contain;
 }
