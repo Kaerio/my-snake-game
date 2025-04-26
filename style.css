@@ -15,12 +15,12 @@ body{
     min-height: 100vh;
     background-color: rgb(213, 203, 190);
     flex-wrap: wrap;
-    margin-bottom: 20px;
+    /* margin-bottom: 20px; */
 }
 
 .instructions-container{
     max-width: 500px;
-    padding: 20px;
+    padding: 20px 20px 0 20px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -98,12 +98,18 @@ body{
     color:var(--orangeColor);
     font-size: 40px;
     margin-bottom: 5px;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
 }
 
 .scores div{
     display: flex;
     align-items:end;
     gap: 10px;
+    background-color: #000;
+    padding: 5px;
 }
 
 .scores div img{
@@ -135,7 +141,7 @@ body{
 }
 
 .game{
-    margin-block: 20px 10px;
+    margin-block: 0 10px;
 }
 
 #board-container{
@@ -148,8 +154,8 @@ body{
     justify-content: center;
     /* 260px représente +/- la taille minimum de "instruction + player + footer" à soustraire
      pour que le jeu reste contenu dans la fenêtre*/
-    max-height: calc(100vh - 260px);
-    max-width: calc(100vh - 260px);
+    max-height: calc(100vh - 120px);
+    max-width: calc(100vh - 120px);
     width: auto;
     height: auto;
 }
