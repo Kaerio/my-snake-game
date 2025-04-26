@@ -7,6 +7,7 @@
 }
 
 body{
+    position:relative;
     margin: 0;
     font-family: "Press Start 2P", system-ui;
     display: flex;
@@ -14,6 +15,7 @@ body{
     min-height: 100vh;
     background-color: rgb(213, 203, 190);
     flex-wrap: wrap;
+    margin-bottom: 20px;
 }
 
 .instructions-container{
@@ -144,10 +146,10 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
-    /* 240px représente +/- la taille minimum de "instruction + player" à soustraire
+    /* 260px représente +/- la taille minimum de "instruction + player + footer" à soustraire
      pour que le jeu reste contenu dans la fenêtre*/
-    max-height: calc(100vh - 220px);
-    max-width: calc(100vh - 220px);
+    max-height: calc(100vh - 260px);
+    max-width: calc(100vh - 260px);
     width: auto;
     height: auto;
 }
@@ -284,4 +286,11 @@ h1{
     opacity: 0.4;
     font-size: min(3vw, 4vh);
     text-align: center;
+}
+
+footer{
+    font-family: "Audiowide", sans-serif;
+    height: 20px;
+    position: absolute;
+    bottom: 0;
 }
