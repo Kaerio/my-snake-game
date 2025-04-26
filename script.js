@@ -82,6 +82,10 @@ function handleUserNameSubmit(event){
 
 //Gestion des touches
 function handelKeyPress(event){
+    // Empêche le scrolling de la page avec les flèches directionnelles
+    if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', ' '].includes(event.key)) {
+        event.preventDefault();
+    }
     if(event.code === 'space' || event.key === ' '){
         if(IsUserNameSet === true && isGameStarted === false){
             startGame()
