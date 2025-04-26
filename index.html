@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Press+Start+2P&display=swap" rel="stylesheet">
     <title>Snake game</title>
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
@@ -25,6 +25,7 @@
     </div>
     
     <div class="game">
+        <p class="player">Player: <span id="user-name-text"></span></p>
         <div class="scores">
             <div>
                 <img src="food.png">
@@ -32,22 +33,27 @@
             </div>
             <div>
                 <span>🏆</span>
-                <span id="best-score">000</span>
+                <span id="high-score">000</span>
             </div>
         </div>
         
         <div id="board-container">  
             <div id="presentation-screen">
-                <h3>Appuyez sur espace pour <br>commencer</h3>
-            </div>          
-            <div id="board">                
-                <!-- la div board-visual-grid en position absolute permet d'avoir un visuel du grid sans devoir créer de cellule dans la div board elle-même-->
-                <div id="board-visual-grid"></div>
+                <span class="version">V0.1</span>
+                <h1>Appuyez sur espace pour <br>commencer</h1>
+            </div>
+            <form id="username-form">
+                <label for="username-input">Entrez votre nom:</label>
+                <input type="text" id="username-input" required maxlength="12" />
+                <button type="submit">Valider</button>
+            </form>       
+            <div id="board">
+                <div id="game-over">Game over</div>
             </div>
         </div>
     </div>
 
     <!-- <div class="food cell"></div> -->
-    <!-- <img src="food.png" alt=""> -->
+    <!-- <img src="snake.png" alt=""> -->
 </body>
 </html>

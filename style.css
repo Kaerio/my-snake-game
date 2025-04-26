@@ -2,6 +2,10 @@
     box-sizing: border-box;
 }
 
+:root{
+    --orangeColor: #d6831a;
+}
+
 body{
     margin: 0;
     font-family: "Press Start 2P", system-ui;
@@ -11,12 +15,6 @@ body{
     background-color: rgb(213, 203, 190);
     flex-wrap: wrap;
 }
-
-/* @media (max-width: 1350px){
-    body{        
-        flex-wrap: wrap;        
-    }   
-} */
 
 .instructions-container{
     max-width: 500px;
@@ -32,7 +30,7 @@ body{
     cursor: pointer;
     border: none;
     background-color: #000;
-    color: #d6831a;
+    color: var(--orangeColor);
     width: 460px;
     padding-block: 0.5em;
     display: inline-flex;
@@ -53,7 +51,7 @@ body{
 }
 
 #instructions-btn:hover{
-    background-color: #d6831a;
+    background-color: var(--orangeColor);
     color: #000;
 }
 
@@ -95,7 +93,7 @@ body{
 .scores{
     display: flex;
     justify-content: space-between;
-    color:#d6831a;
+    color:var(--orangeColor);
     font-size: 40px;
     margin-bottom: 5px;
 }
@@ -109,6 +107,11 @@ body{
 .scores div img{
     display: inline-block;
     width: 55px;
+}
+
+.player{
+    color: #000;
+    font-size: 20px;
 }
 
 @media (max-width: 400px){
@@ -141,8 +144,10 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
-    max-height: calc(100vh - 150px);
-    max-width: calc(100vh - 150px);
+    /* 240px représente +/- la taille minimum de "instruction + player" à soustraire
+     pour que le jeu reste contenu dans la fenêtre*/
+    max-height: calc(100vh - 220px);
+    max-width: calc(100vh - 220px);
     width: auto;
     height: auto;
 }
@@ -154,14 +159,6 @@ body{
     display: grid;
     border: 12px solid #2a5520;
 }
-
-/* @media (max-width: 600px){
-    #board{
-        width: 69.2%;
-        height: 69.2%;
-        border: 8px solid #2a5520;
-    }
-} */
 
 #presentation-screen{
     /* display: none; */
@@ -176,55 +173,63 @@ body{
     z-index: 1;
 }
 
-h3{
+.version{
+    position: absolute;
+    color: #e13822;
+    top: 47%;
+    right: 20%;
+    font-family: "Audiowide", sans-serif;
+    font-size: min(4vw, 3vh);
+}
+
+h1{
     position: absolute;
     bottom: 0;
     width: 100%;
     color: #fff;
-    font-size: 8px;
+    font-size: min(3vw, 2.5vh);
     text-align: center;
     line-height: 1.5;
-    margin-bottom: 4px;
+    margin-bottom: 10px;
 }
 
-@media (min-width: 430px){
-    h3{
-        font-size: 10px;
-    }
-}
 
-@media (min-width: 500px){
-    h3{
-        font-size: 14px;
-    }
-}
-
-@media (min-width: 600px){
-    h3{
-        font-size: 18px;
-    }
-}
-
-@media (min-width: 700px){
-    h3{
-        font-size: 22px;
-    }
-}
-
-@media (min-width: 830px){
-    h3{
-        font-size: 28px;
-        margin-bottom: 10px;
-    }
-}
-
-#board-visual-grid{
+#username-form{
+    display: none;
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    display: grid;
+    background-color: rgb(225, 196, 169);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    z-index: 1;
+}
+
+#username-form input {
+    padding: 8px;
+    font-size: 1rem;
+    width: min(500px, 80%);
+    font-family: "Press Start 2P", system-ui;
+}
+
+#username-form button {
+    padding: 8px 16px;
+    font-size: 1rem;
+    cursor: pointer;
+    background-color: var(--orangeColor);
+    border: none;
+    color: white;
+    font-family: "Press Start 2P", system-ui;
+}
+
+#username-form button:hover {
+    background-color: black;
+    color: var(--orangeColor);
 }
 
 .cell{
@@ -235,34 +240,48 @@ h3{
 }
 
 .snake-body{
-    background: #207325;
+    background: #6db144;
+    border-radius: 15%;
 }
 
 .snake-head-down{
     background: url('snake.png') center no-repeat;
     background-size: contain;
-    /* border: 1px solid rgba(87, 99, 80, 0.15); */
 }
 .snake-head-up{
     background: url('snake.png') center no-repeat;
     background-size: contain;
     transform: rotate(180deg);
-    /* border: 1px solid rgba(87, 99, 80, 0.15); */
 }
 .snake-head-right{
     background: url('snake.png') center no-repeat;
     background-size: contain;
     transform: rotate(-90deg);
-    /* border: 1px solid rgba(87, 99, 80, 0.15); */
 }
 .snake-head-left{
     background: url('snake.png') center no-repeat;
     background-size: contain;
     transform: rotate(90deg);
-    /* border: 1px solid rgba(87, 99, 80, 0.15); */
 }
 
 .food{
     background: url('food.png') center no-repeat;
     background-size: contain;
+}
+
+#game-over{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    inset: 0 0 0 0;
+    margin: auto;
+    background-color: rgba(0, 0, 0, 1);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    z-index: 1;
+    opacity: 0.4;
+    font-size: min(3vw, 4vh);
+    text-align: center;
 }
