@@ -82,44 +82,45 @@ function handleUserNameSubmit(event){
 
 //Gestion des touches
 function handelKeyPress(event){
-    // Empêche le scrolling de la page avec les flèches directionnelles
-    if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', ' '].includes(event.key)) {
-        event.preventDefault();
-    }
+    //Appuyer sur espace pour lancer le jeu
     if(event.code === 'space' || event.key === ' '){
         if(IsUserNameSet === true && isGameStarted === false){
             startGame()
         }
     }
-    else{        
-        let newDirection = direction;
+    // Empêche le scrolling si jeu démarré
+    if (isGameStarted && ['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', ' '].includes(event.key)) {
+        event.preventDefault();
+    }    
 
-        switch (event.key) {
-            case 'ArrowUp':
-                newDirection = 'up';
-                break;
-            case 'ArrowDown':
-                newDirection = 'down';
-                break;
-            case 'ArrowLeft':
-                newDirection = 'left';
-                break;
-            case 'ArrowRight':
-                newDirection = 'right';
-                break;                
-        }
+    //Gestion direction du serpent        
+    let newDirection = direction;
 
-        // Empêcher au serpent de faire demi-tour sur lui-même
-        if (snake.length > 1) {
-            if ((currentSnakeDirection === 'up' && newDirection === 'down') ||
-                (currentSnakeDirection === 'down' && newDirection === 'up') ||
-                (currentSnakeDirection === 'left' && newDirection === 'right') ||
-                (currentSnakeDirection === 'right' && newDirection === 'left')) {
-                return;
-            }
+    switch (event.key) {
+        case 'ArrowUp':
+            newDirection = 'up';
+            break;
+        case 'ArrowDown':
+            newDirection = 'down';
+            break;
+        case 'ArrowLeft':
+            newDirection = 'left';
+            break;
+        case 'ArrowRight':
+            newDirection = 'right';
+            break;                
+    }
+
+    // Empêcher au serpent de faire demi-tour sur lui-même
+    if (snake.length > 1) {
+        if ((currentSnakeDirection === 'up' && newDirection === 'down') ||
+            (currentSnakeDirection === 'down' && newDirection === 'up') ||
+            (currentSnakeDirection === 'left' && newDirection === 'right') ||
+            (currentSnakeDirection === 'right' && newDirection === 'left')) {
+            return;
         }
-        direction = newDirection;
-    }           
+    }
+    direction = newDirection;             
 }
 
 // ==================================
