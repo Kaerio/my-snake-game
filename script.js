@@ -18,7 +18,7 @@ const startGameText = document.getElementById('start-game')
 const fullscreenToggleBtn = document.getElementById('fullscreen-toggle-btn')
 const fullScreenIcon = document.getElementById('full-screen-icon')
 const minimizeScreenIcon = document.getElementById('minimize-screen-icon')
-const GameOverText = document.getElementById('game-over')
+const gameOverText = document.getElementById('game-over')
 
 // ==================================
 // Variables globales
@@ -183,7 +183,7 @@ if (IsUserNameSet) {
 for(let row = 1; row <= gridSize; row++){
     for (let col = 1; col <= gridSize; col++) {
         const cell = document.createElement('div')
-        cell.className = 'cell'
+        cell.classList.add('cell')
         cell.id = `x${col}-y${row}`
         board.appendChild(cell)
     }
@@ -222,26 +222,30 @@ function draw(){
 function drawSnake(){
     snake.forEach((segment, index) => {
         const htmlElement = document.querySelector(`#x${segment.x}-y${segment.y}`)
+        htmlElement.className = ''
 
+        //Tête du serpent
         if(index === 0 ||
             //Ou en cas de collision fin de partie montrer la tête sur le corps
             (snake[0].x === segment.x && snake[0].y === segment.y) ){ 
                 switch (direction) {
                     case 'down':
-                        htmlElement.className = 'snake-head-down'
+                        htmlElement.classList.add('snake-head-down')
                         break;
                     case 'up':
-                        htmlElement.className = 'snake-head-up'
+                        htmlElement.classList.add('snake-head-up')
                         break;
                     case 'right':
-                        htmlElement.className = 'snake-head-right'
+                        htmlElement.classList.add('snake-head-right')
                         break;
                     case 'left':
-                        htmlElement.className = 'snake-head-left'
+                        htmlElement.classList.add('snake-head-left')
                         break; 
             }
-        }else{
-            htmlElement.className = 'snake-body'
+        }
+        //Corps du serpent
+        else{
+            htmlElement.classList.add('snake-body')
         }
     })
 }
@@ -253,7 +257,8 @@ function drawFood(){
     } while (isFoodInSnake());
 
     const htmlElement = document.querySelector(`#x${foodPosition.x}-y${foodPosition.y}`)
-    htmlElement.className = 'food'
+    htmlElement.className = ''
+    htmlElement.classList.add('food')
 }
 
 function generateFoodPosition(){
@@ -322,7 +327,8 @@ function move(){
         //reset de la dernière cellule du serpent si il n'a pas mangé la nouriture
         const cellPosition = snake.pop()
         const htmlElement = document.querySelector(`#x${cellPosition.x}-y${cellPosition.y}`)
-        htmlElement.className = 'cell'
+        htmlElement.className = ''
+        htmlElement.classList.add('cell')
     }    
 }
 
@@ -351,7 +357,7 @@ function checkCollision(){
 
 function gameOver(){
     clearInterval(gameInterval)
-    GameOverText.style.display = 'flex'
+    gameOverText.style.display = 'flex'
     highScore = highScore > currentScore ? highScore : currentScore
     localStorage.setItem('highScore', highScore)
     highScoreText.textContent = highScore.toString().padStart(3, '0')
