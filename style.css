@@ -5,18 +5,73 @@
 :root{
     --bodyBgColor: rgb(213, 203, 190);
     --orangeColor: #d6831a;
+    --yellowColor: #fcc215;
 }
 
 body{
     position:relative;
     margin: 0;
+    padding: 0;
     font-family: "Press Start 2P", system-ui;
     display: flex;
     justify-content: space-evenly;
     min-height: 100vh;
     background-color: var(--bodyBgColor);
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
     /* margin-bottom: 20px; */
+    /* overflow: hidden; */
+}
+
+#presentation-screen{
+    /* display: none; */
+    position: fixed;
+    /* background: url('image-presentation.png') center no-repeat;
+    background-size: contain; */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(72, 95, 59);
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 100vw;
+    max-height: 100vh;
+}
+
+.logo{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: aqua;
+}
+
+.logo img{
+    max-width: 100vw;
+    max-height: 100vh;
+    
+}
+
+.version{
+    position: absolute;
+    color: var(--yellowColor);
+    top: 46%;
+    right: 18%;
+    font-family: "Audiowide", sans-serif;
+    font-size: min(4vw, 3vh);
+}
+
+h1{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    color: #fff;
+    font-size: min(3vw, 2.5vh);
+    text-align: center;
+    line-height: 1.5;
+    padding-bottom: 10px;
 }
 
 .instructions-container{
@@ -189,6 +244,7 @@ body{
     height: 100%;;
     z-index: 9;
     background-color: var(--bodyBgColor);
+    background-color: #1e1e1e;
 }
 
 #board{
@@ -199,40 +255,6 @@ body{
     border: 12px solid #2a5520;
     background-color: #b9823f;
 }
-
-#presentation-screen{
-    /* display: none; */
-    position: absolute;
-    background: url('image-presentation.png') center no-repeat;
-    background-size: contain;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgb(72, 95, 59);
-    z-index: 1;
-}
-
-.version{
-    position: absolute;
-    color: #e13822;
-    top: 47%;
-    right: 20%;
-    font-family: "Audiowide", sans-serif;
-    font-size: min(4vw, 3vh);
-}
-
-h1{
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    color: #fff;
-    font-size: min(3vw, 2.5vh);
-    text-align: center;
-    line-height: 1.5;
-    margin-bottom: 10px;
-}
-
 
 #username-form{
     display: none;
@@ -331,10 +353,3 @@ h1{
     margin-bottom: 20%;
     line-height: 2;
 }
-
-/* footer{
-    font-family: "Audiowide", sans-serif;
-    height: 20px;
-    position: absolute;
-    bottom: 0;
-} */
