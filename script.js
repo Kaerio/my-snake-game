@@ -45,7 +45,7 @@ let currentSnakeDirection = 'right'
 let gameInterval
 let gameIntervalDelay = 200
 
-localStorage.removeItem('userName')
+// localStorage.removeItem('userName')
 
 // ==================================
 // Initialisation (event listeners + setup de la page)
@@ -378,10 +378,9 @@ function gameOver(){
 
 function createGameOverText(){
     let output = `
-    <h2>Game over</h2>
-    <p>Score: ${currentScore.toString()}</p>
-    <p>Player: ${userName}</p>    
-    <p>Best score: ${highScore.toString()}</p>
-    `
+        <h2>Game over</h2>
+        <p>Score: ${currentScore.toString()}</p>
+        <p>Player: ${userName}</p>    
+        <p>Best score: ${highScore.toString()}</p>`
     return output
 }
