@@ -221,8 +221,8 @@ function draw(){
 
 function drawSnake(){
     snake.forEach((segment, index) => {
-        const htmlElement = document.querySelector(`#x${segment.x}-y${segment.y}`)
-        htmlElement.className = ''
+        const cell = document.querySelector(`#x${segment.x}-y${segment.y}`)
+        cell.className = ''
 
         //Tête du serpent
         if(index === 0 ||
@@ -230,22 +230,22 @@ function drawSnake(){
             (snake[0].x === segment.x && snake[0].y === segment.y) ){ 
                 switch (direction) {
                     case 'down':
-                        htmlElement.classList.add('snake-head-down')
+                        cell.classList.add('snake-head-down')
                         break;
                     case 'up':
-                        htmlElement.classList.add('snake-head-up')
+                        cell.classList.add('snake-head-up')
                         break;
                     case 'right':
-                        htmlElement.classList.add('snake-head-right')
+                        cell.classList.add('snake-head-right')
                         break;
                     case 'left':
-                        htmlElement.classList.add('snake-head-left')
+                        cell.classList.add('snake-head-left')
                         break; 
             }
         }
         //Corps du serpent
         else{
-            htmlElement.classList.add('snake-body')
+            cell.classList.add('snake-body')
         }
     })
 }
@@ -256,9 +256,9 @@ function drawFood(){
         foodPosition = generateFoodPosition()
     } while (isFoodInSnake());
 
-    const htmlElement = document.querySelector(`#x${foodPosition.x}-y${foodPosition.y}`)
-    htmlElement.className = ''
-    htmlElement.classList.add('food')
+    const cell = document.querySelector(`#x${foodPosition.x}-y${foodPosition.y}`)
+    cell.className = ''
+    cell.classList.add('food')
 }
 
 function generateFoodPosition(){
@@ -326,9 +326,9 @@ function move(){
     }else{
         //reset de la dernière cellule du serpent si il n'a pas mangé la nouriture
         const cellPosition = snake.pop()
-        const htmlElement = document.querySelector(`#x${cellPosition.x}-y${cellPosition.y}`)
-        htmlElement.className = ''
-        htmlElement.classList.add('cell')
+        const cell = document.querySelector(`#x${cellPosition.x}-y${cellPosition.y}`)
+        cell.className = ''
+        cell.classList.add('cell')
     }    
 }
 
