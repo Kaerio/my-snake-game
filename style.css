@@ -129,6 +129,10 @@ h1{
     
 }
 
+#instructions-text li .btn-screenshot{
+    display: inline-block;
+    width: 38px;
+}
 #instructions-text li img{
     display: inline-block;
     width: 26px;
