@@ -1,4 +1,5 @@
 //TO DO !!!
+//html language attribute
 //thanks for feedback: DaveDust
 //Ideas: change username, wall of death,, filigrane "snake Game Ultra" sur background
 //menu of settings, gameTime, number of turns (currentDirection change)
@@ -44,7 +45,7 @@ let currentSnakeDirection = 'right'
 let gameInterval
 let gameIntervalDelay = 200
 
-// localStorage.removeItem('userName')
+localStorage.removeItem('userName')
 
 // ==================================
 // Initialisation (event listeners + setup de la page)
