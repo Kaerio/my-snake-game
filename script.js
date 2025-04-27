@@ -42,7 +42,7 @@ let currentSnakeDirection = 'right'
 let gameInterval
 let gameIntervalDelay = 200
 
-localStorage.removeItem('userName')
+// localStorage.removeItem('userName')
 
 // ==================================
 // Initialisation (event listeners + setup de la page)
