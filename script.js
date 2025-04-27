@@ -1,5 +1,7 @@
 //TO DO !!!
 //thanks for feedback: DaveDust
+//Ideas: change username, wall of death,, filigrane "snake Game Ultra" sur background
+//menu of settings, gameTime, number of turns (currentDirection change)
 
 
 // ==================================
@@ -79,15 +81,6 @@ function resizeBoardContainer(){
     board.style.gridTemplateRows = `repeat(${gridSize}, 1fr)`     
 }
 
-function toggleFullScreen(){
-    if(isBoardMaximized){
-        minimizeBoard()
-    }
-     else{
-        maximizeBoard()
-    }
-}
-
 function maximizeBoard() {
     isBoardMaximized = true
     resizeBoardContainer()
@@ -108,6 +101,15 @@ function minimizeBoard() {
     fullScreenIcon.style.display = 'inline'
 }
 
+function toggleFullScreen(){
+    if(isBoardMaximized){
+        minimizeBoard()
+    }
+     else{
+        maximizeBoard()
+    }
+}
+
 //Gestion formulaire de choix du nom de joueur
 function handleUserNameSubmit(event){
     event.preventDefault()
@@ -116,8 +118,6 @@ function handleUserNameSubmit(event){
         userName = inputValue
         IsUserNameSet = true
         localStorage.setItem('userName', userName)
-        // usernameForm.style.display = 'none'
-        // userNameText.textContent = userName
         displayUsernameForm()
     }
 }
@@ -171,10 +171,12 @@ function handleKeyPress(event){
     direction = newDirection;             
 }
 
+function removePresentationScreen(){
+    presentationScreen.style.display = 'none'
+    isPresentationScreenRemoved = true
+    displayUsernameForm()    
+}
 
-// ==================================
-// Initialisation setup de la page)
-// ==================================
 //Affichage du formulaire de choix du nom
 function displayUsernameForm(){
     if (IsUserNameSet) {
@@ -188,6 +190,9 @@ function displayUsernameForm(){
     }
 }
 
+// ==================================
+// Initialisation setup de la page)
+// ==================================
 
 //Création du Grid initial du pleateau de jeu
 for(let row = 1; row <= gridSize; row++){
@@ -203,18 +208,15 @@ resizeBoardContainer() // définition initiale du plateau de jeu
 highScoreText.textContent = highScore.toString().padStart(3, '0');
 
 // ==================================
-// Fonctions
+// Fonctions du jeu
 // ==================================
-function removePresentationScreen(){
-    presentationScreen.style.display = 'none'
-    isPresentationScreenRemoved = true
-    displayUsernameForm()    
-}
+
 
 function startGame(){  
     startGameText.style.display = 'none'  
     isGameStarted = true
     currentScore = 0
+    // gameOver()
     
     // draw()
     gameInterval = setInterval(() => {
@@ -365,9 +367,20 @@ function checkCollision(){
 }
 
 function gameOver(){
-    clearInterval(gameInterval)
-    gameOverText.style.display = 'flex'
+    clearInterval(gameInterval)    
     highScore = highScore > currentScore ? highScore : currentScore
     localStorage.setItem('highScore', highScore)
     highScoreText.textContent = highScore.toString().padStart(3, '0')
+    gameOverText.style.display = 'flex'
+    gameOverText.innerHTML = createGameOverText()    
+}
+
+function createGameOverText(){
+    let output = `
+    <h2>Game over</h2>
+    <p>Score: ${currentScore.toString()}</p>
+    <p>Player: ${userName}</p>    
+    <p>Best score: ${highScore.toString()}</p>
+    `
+    return output
 }
