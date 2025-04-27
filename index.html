@@ -7,6 +7,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Press+Start+2P&display=swap" rel="stylesheet">
     <title>Snake game</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
 </head>
@@ -28,19 +29,23 @@
         <p class="player">Player: <span id="user-name-text"></span></p>
         
         
-        <div id="board-container"> 
+        <div id="board-container" class="minimized"> 
             <div class="scores">
-                <div>
+                <div class="score-details">
                     <img src="food.png">
                     <span id="score">000</span>
                 </div>
-                <div>
+                <button id="fullscreen-toggle-btn">
+                    <i class="fa-solid fa-expand" id="full-screen-icon"></i>
+                    <i class="fa-solid fa-minimize" id="minimize-screen-icon"></i>
+                </button>
+                <div class="score-details">
                     <span>🏆</span>
                     <span id="high-score">000</span>
-                </div>
+                </div>                
             </div> 
             <div id="presentation-screen">
-                <span class="version">V0.1</span>
+                <span class="version">V0.2</span>
                 <h1>Appuyez sur espace pour <br>commencer</h1>
             </div>
             <form id="username-form">
@@ -49,10 +54,15 @@
                 <button type="submit">Valider</button>
             </form>       
             <div id="board">
+                <div id="start-game">
+                    <p>Pressez espace pour démarrer</p>
+                </div>
                 <div id="game-over">Game over</div>
             </div>
         </div>
     </div>
+
+    <div id="overlay" class="overlay"></div>
 
     <!-- <footer>Created by Mika</footer> -->
 </body>

@@ -10,9 +10,14 @@ const instructionsBtnArrow = instructionsBtn.querySelector('.instructions-btn-ar
 const instructionsText = document.getElementById('instructions-text')
 const boardContainer = document.getElementById('board-container')
 const board = document.getElementById('board') //là où le jeu se déroule
+const overlayDiv = document.getElementById('overlay') //là où le jeu se déroule
 const presentationScreen = document.getElementById('presentation-screen')
 const scoreText = document.getElementById('score')
 const highScoreText = document.getElementById('high-score')
+const startGameText = document.getElementById('start-game')
+const fullscreenToggleBtn = document.getElementById('fullscreen-toggle-btn')
+const fullScreenIcon = document.getElementById('full-screen-icon')
+const minimizeScreenIcon = document.getElementById('minimize-screen-icon')
 const GameOverText = document.getElementById('game-over')
 
 // ==================================
@@ -22,6 +27,8 @@ const gridSize = 20
 let userName = localStorage.getItem('userName') || ''
 let IsUserNameSet = userName === '' ? false : true
 let isGameStarted = false
+let isPresentationScreenRemoved = false
+let isBoardMaximized = false
 let currentScore = 0
 let highScore = Number(localStorage.getItem('highScore')) || 0
 const snake = [{x: 10, y: 10}]
@@ -34,13 +41,15 @@ let gameIntervalDelay = 200
 // ==================================
 // Initialisation (event listeners + setup de la page)
 // ==================================
-
-
 instructionsBtn.addEventListener('click', toggleInstructions);
 //ajuste dynamiquement la taille du jeu selon le resize de la fenêtre
 window.addEventListener('resize', resizeBoardContainer)
 usernameForm.addEventListener('submit', handleUserNameSubmit)
-document.addEventListener('keydown', handelKeyPress)
+document.addEventListener('keydown', handleKeyPress)
+// fullScreenIcon.addEventListener('click',maximizeBoard)  
+// minimizeScreenIcon.addEventListener('click', minimizeBoard)
+fullscreenToggleBtn.addEventListener('click', toggleFullScreen)
+
 
 //Toggle affichage des instructions de jeu
 function toggleInstructions(){
@@ -55,15 +64,44 @@ function toggleInstructions(){
     }
 }
 
-//Définition de la dimension du plateau de jeu
+//Définition de la dimension du plateau de jeu (avec padding de 30px)
 function resizeBoardContainer(){
-    const windowMinDimension = Math.min(window.innerWidth, window.innerHeight) - 30
+    const padding = isBoardMaximized ? 0 : 30
+    const windowMinDimension = Math.min(window.innerWidth, window.innerHeight) - padding
     boardContainer.style.width = `${windowMinDimension}px`
     boardContainer.style.height = `${windowMinDimension}px`
-
-    //Définition des dimension du grid
+    //Définition des dimension du grid du jeu
     board.style.gridTemplateColumns = `repeat(${gridSize}, 1fr)`
     board.style.gridTemplateRows = `repeat(${gridSize}, 1fr)`     
+}
+
+function toggleFullScreen(){
+    if(isBoardMaximized){
+        minimizeBoard()
+    }
+     else{
+        maximizeBoard()
+    }
+}
+
+function maximizeBoard() {
+    isBoardMaximized = true
+    resizeBoardContainer()
+    boardContainer.classList.add('maximized');
+    boardContainer.classList.remove('minimized');
+    overlayDiv.style.display = 'block'
+    fullScreenIcon.style.display = 'none'
+    minimizeScreenIcon.style.display = 'inline'
+}
+  
+function minimizeBoard() {
+    isBoardMaximized = false
+    resizeBoardContainer()
+    boardContainer.classList.add('minimized');
+    boardContainer.classList.remove('maximized');
+    overlayDiv.style.display = 'none'
+    minimizeScreenIcon.style.display = 'none'
+    fullScreenIcon.style.display = 'inline'
 }
 
 //Gestion formulaire de choix du nom de joueur
@@ -81,13 +119,18 @@ function handleUserNameSubmit(event){
 }
 
 //Gestion des touches
-function handelKeyPress(event){
-    //Appuyer sur espace pour lancer le jeu
-    if(event.code === 'space' || event.key === ' '){
-        if(IsUserNameSet === true && isGameStarted === false){
-            startGame()
-        }
-    }
+function handleKeyPress(event){
+    //Appuyer sur espace pour retirer l'écran de présentation ou lancer le jeu
+    if((event.code === 'space' || event.key === ' ')
+        && IsUserNameSet === true && isGameStarted === false ){        
+            if(isPresentationScreenRemoved === false){
+                removePresentationScreen()
+            }
+            else if(isPresentationScreenRemoved === true){
+                startGame()
+            }
+    }    
+
     // Empêche le scrolling si jeu démarré
     if (isGameStarted && ['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', ' '].includes(event.key)) {
         event.preventDefault();
@@ -123,6 +166,7 @@ function handelKeyPress(event){
     direction = newDirection;             
 }
 
+
 // ==================================
 // Initialisation setup de la page)
 // ==================================
@@ -151,11 +195,18 @@ highScoreText.textContent = highScore.toString().padStart(3, '0');
 // ==================================
 // Fonctions
 // ==================================
+function removePresentationScreen(){
+    presentationScreen.style.display = 'none'
+    isPresentationScreenRemoved = true
+    draw()
+    startGameText.style.display = 'flex'
+}
 
-function startGame(){    
+function startGame(){  
+    startGameText.style.display = 'none'  
     isGameStarted = true
     currentScore = 0
-    presentationScreen.style.display = 'none'
+    
     draw()
     gameInterval = setInterval(() => {
         move()
