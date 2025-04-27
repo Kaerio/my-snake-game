@@ -6,6 +6,8 @@
     --bodyBgColor: rgb(213, 203, 190);
     --orangeColor: #d6831a;
     --yellowColor: #fcc215;
+    --snakeBodyColor: #6db144;
+    --presentationScreenBg: rgb(72, 95, 59);
 }
 
 body{
@@ -17,7 +19,7 @@ body{
     justify-content: space-evenly;
     min-height: 100vh;
     background-color: var(--bodyBgColor);
-    /* flex-wrap: wrap; */
+    flex-wrap: wrap;
     /* margin-bottom: 20px; */
     /* overflow: hidden; */
 }
@@ -31,7 +33,7 @@ body{
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: rgb(72, 95, 59);
+    background-color: var(--presentationScreenBg);
     z-index: 1;
     display: flex;
     justify-content: center;
@@ -265,18 +267,17 @@ h1{
 
 #username-form{
     display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgb(225, 196, 169);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    background-color: #000;
     gap: 15px;
-    z-index: 1;
+    z-index: 2;
 }
 
 #username-form input {
@@ -284,6 +285,12 @@ h1{
     font-size: 1rem;
     width: min(500px, 80%);
     font-family: "Press Start 2P", system-ui;
+    border: 0;
+    outline: 6px solid transparent;
+}
+
+#username-form input:focus{
+    outline: 6px solid var(--orangeColor);
 }
 
 #username-form button {
@@ -297,8 +304,8 @@ h1{
 }
 
 #username-form button:hover {
-    background-color: black;
-    color: var(--orangeColor);
+    background-color: #6db144;
+    color: white;
 }
 
 .cell{
@@ -309,7 +316,7 @@ h1{
 }
 
 .snake-body{
-    background: #6db144;
+    background: var(--snakeBodyColor);
     border-radius: 15%;
 }
 

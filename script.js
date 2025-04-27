@@ -1,3 +1,7 @@
+//TO DO !!!
+//thanks for feedback: DaveDust
+
+
 // ==================================
 // Sélection des éléments DOM
 // ==================================
@@ -38,6 +42,8 @@ let currentSnakeDirection = 'right'
 let gameInterval
 let gameIntervalDelay = 200
 
+localStorage.removeItem('userName')
+
 // ==================================
 // Initialisation (event listeners + setup de la page)
 // ==================================
@@ -46,8 +52,6 @@ instructionsBtn.addEventListener('click', toggleInstructions);
 window.addEventListener('resize', resizeBoardContainer)
 usernameForm.addEventListener('submit', handleUserNameSubmit)
 document.addEventListener('keydown', handleKeyPress)
-// fullScreenIcon.addEventListener('click',maximizeBoard)  
-// minimizeScreenIcon.addEventListener('click', minimizeBoard)
 fullscreenToggleBtn.addEventListener('click', toggleFullScreen)
 
 
@@ -112,21 +116,22 @@ function handleUserNameSubmit(event){
         userName = inputValue
         IsUserNameSet = true
         localStorage.setItem('userName', userName)
-        usernameForm.style.display = 'none'
-        presentationScreen.style.display = 'flex'
-        userNameText.textContent = userName
+        // usernameForm.style.display = 'none'
+        // userNameText.textContent = userName
+        displayUsernameForm()
     }
 }
 
 //Gestion des touches
 function handleKeyPress(event){
     //Appuyer sur espace pour retirer l'écran de présentation ou lancer le jeu
-    if((event.code === 'space' || event.key === ' ')
-        && IsUserNameSet === true && isGameStarted === false ){        
+    if((event.code === 'space' || event.key === ' ') && isGameStarted === false ){        
             if(isPresentationScreenRemoved === false){
                 removePresentationScreen()
             }
-            else if(isPresentationScreenRemoved === true){
+            else if(isPresentationScreenRemoved === true 
+                && IsUserNameSet === true
+                && isGameStarted === false){
                 startGame()
             }
     }    
@@ -171,13 +176,18 @@ function handleKeyPress(event){
 // Initialisation setup de la page)
 // ==================================
 //Affichage du formulaire de choix du nom
-if (IsUserNameSet) {
-    usernameForm.style.display = 'none'
-    presentationScreen.style.display = 'flex'
-    userNameText.textContent = userName
-} else {
-    usernameForm.style.display = 'flex';
+function displayUsernameForm(){
+    if (IsUserNameSet) {
+        usernameForm.style.display = 'none'
+        // presentationScreen.style.display = 'flex'
+        userNameText.textContent = userName
+        draw()
+        startGameText.style.display = 'flex'
+    } else {
+        usernameForm.style.display = 'flex';
+    }
 }
+
 
 //Création du Grid initial du pleateau de jeu
 for(let row = 1; row <= gridSize; row++){
@@ -198,8 +208,7 @@ highScoreText.textContent = highScore.toString().padStart(3, '0');
 function removePresentationScreen(){
     presentationScreen.style.display = 'none'
     isPresentationScreenRemoved = true
-    draw()
-    startGameText.style.display = 'flex'
+    displayUsernameForm()    
 }
 
 function startGame(){  
@@ -207,7 +216,7 @@ function startGame(){
     isGameStarted = true
     currentScore = 0
     
-    draw()
+    // draw()
     gameInterval = setInterval(() => {
         move()
         draw()
