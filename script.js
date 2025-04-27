@@ -56,11 +56,11 @@ function toggleInstructions(){
     if (getComputedStyle(instructionsText).display === 'none') {
         instructionsText.style.display = 'block'
         instructionsBtn.classList.add('open')
-        instructionsBtnText.textContent = 'Cacher les instructions'
+        instructionsBtnText.textContent = 'Hide instructions'
     } else {
         instructionsText.style.display = 'none'
         instructionsBtn.classList.remove('open')
-        instructionsBtnText.textContent = 'Voir les instructions'
+        instructionsBtnText.textContent = 'Show instructions'
     }
 }
 

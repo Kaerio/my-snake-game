@@ -118,12 +118,15 @@ h1{
     list-style: square;
     padding-left: 10px;
     max-width: 500px;
+    /* list-style-position: inside; */
 }
 
 #instructions-text li{
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     line-height: 1.5;
     color: black;
+    padding-left: 5px;
+    
 }
 
 #instructions-text li img{
