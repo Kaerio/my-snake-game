@@ -1,16 +1,20 @@
 //TO DO !!!
 //html language attribute
 //thanks for feedback: DaveDust
-//Ideas: change username, wall of death,, filigrane "snake Game Ultra" sur background
+//Ideas: time and speed in lower bar, change username, wall of death,, filigrane "snake Game Ultra" sur background
 //menu of settings, gameTime, number of turns (currentDirection change)
 
 
 // ==================================
 // Sélection des éléments DOM
 // ==================================
+const presentationScreen = document.getElementById('presentation-screen')
+const presentationScreenBtb = document.getElementById('presentation-screen-btn')
 const usernameForm = document.getElementById('username-form')
 const usernameInput = document.getElementById('username-input')
 const userNameText = document.getElementById('user-name-text')
+const startGameScreen = document.getElementById('start-game-screen')
+const startGameBtn = document.getElementById('start-game-btn')
 const instructionsBtn = document.getElementById('instructions-btn')
 const instructionsBtnText = instructionsBtn.querySelector('.instructions-btn-text')
 const instructionsBtnArrow = instructionsBtn.querySelector('.instructions-btn-arrow')
@@ -18,10 +22,8 @@ const instructionsText = document.getElementById('instructions-text')
 const boardContainer = document.getElementById('board-container')
 const board = document.getElementById('board') //là où le jeu se déroule
 const overlayDiv = document.getElementById('overlay') //là où le jeu se déroule
-const presentationScreen = document.getElementById('presentation-screen')
 const scoreText = document.getElementById('score')
 const highScoreText = document.getElementById('high-score')
-const startGameText = document.getElementById('start-game')
 const fullscreenToggleBtn = document.getElementById('fullscreen-toggle-btn')
 const fullScreenIcon = document.getElementById('full-screen-icon')
 const minimizeScreenIcon = document.getElementById('minimize-screen-icon')
@@ -50,13 +52,14 @@ let gameIntervalDelay = 200
 // ==================================
 // Initialisation (event listeners + setup de la page)
 // ==================================
+presentationScreenBtb.addEventListener('click', removePresentationScreen)
+usernameForm.addEventListener('submit', handleUserNameSubmit)
+startGameBtn.addEventListener('click', handleStartGameBtn)
 instructionsBtn.addEventListener('click', toggleInstructions);
 //ajuste dynamiquement la taille du jeu selon le resize de la fenêtre
 window.addEventListener('resize', resizeBoardContainer)
-usernameForm.addEventListener('submit', handleUserNameSubmit)
 document.addEventListener('keydown', handleKeyPress)
 fullscreenToggleBtn.addEventListener('click', toggleFullScreen)
-
 
 //Toggle affichage des instructions de jeu
 function toggleInstructions(){
@@ -123,20 +126,15 @@ function handleUserNameSubmit(event){
     }
 }
 
-//Gestion des touches
-function handleKeyPress(event){
-    //Appuyer sur espace pour retirer l'écran de présentation ou lancer le jeu
-    if((event.code === 'space' || event.key === ' ') && isGameStarted === false ){        
-            if(isPresentationScreenRemoved === false){
-                removePresentationScreen()
-            }
-            else if(isPresentationScreenRemoved === true 
-                && IsUserNameSet === true
-                && isGameStarted === false){
-                startGame()
-            }
-    }    
+function handleStartGameBtn(){
+    //Si Click sur "start" pour lancer le jeu
+    if(IsUserNameSet === true && isGameStarted === false){
+        startGame()
+    } 
+}
 
+//Gestion des touches
+function handleKeyPress(event){ 
     // Empêche le scrolling si jeu démarré
     if (isGameStarted && ['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', ' '].includes(event.key)) {
         event.preventDefault();
@@ -182,10 +180,9 @@ function removePresentationScreen(){
 function displayUsernameForm(){
     if (IsUserNameSet) {
         usernameForm.style.display = 'none'
-        // presentationScreen.style.display = 'flex'
         userNameText.textContent = userName
         draw()
-        startGameText.style.display = 'flex'
+        startGameScreen.style.display = 'flex'
     } else {
         usernameForm.style.display = 'flex';
     }
@@ -214,7 +211,7 @@ highScoreText.textContent = highScore.toString().padStart(3, '0');
 
 
 function startGame(){  
-    startGameText.style.display = 'none'  
+    startGameScreen.style.display = 'none'  
     isGameStarted = true
     currentScore = 0
     // gameOver()
