@@ -74,7 +74,7 @@ body{
     width: fit-content;
     background-color: #000;
     color: #fff;
-    border: 5px solid;
+    border: 8px solid;
     font-family: "Audiowide", sans-serif;
     font-size: min(3vw, 2.5vh);
     font-weight: bold;
@@ -86,7 +86,18 @@ body{
 
 #presentation-screen-btn:hover,
 #presentation-screen-btn:active{
-    color: var(--snakeBodyColor);
+    opacity: 1;
+    border: 8px solid var(--snakeBodyColor);
+    /* text-shadow: 2px 2px 0px #000; */
+    font-weight: bold;
+}
+
+#presentation-screen-btn:hover{
+    box-shadow: 3px 3px 8px #000;
+}
+#presentation-screen-btn:active{
+    box-shadow: unset;
+    transform: scale(0.98);
 }
 
 
@@ -366,7 +377,7 @@ body{
     height: 100%;
     inset: 0 0 0 0;
     margin: auto;
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(0, 0, 0, 0.3);
     display: none;
     align-items: end;
     justify-content: center;
@@ -381,11 +392,29 @@ body{
     margin-bottom: 20%;
     font-size: min(3vw, 4vh);
     font-family: "Press Start 2P", system-ui;
-    font-weight: bold;
+    
     padding: 0.5em 1.5em;
     cursor: pointer;
     background-color: #fff;
-    opacity: 0.8;
+    opacity: 1;
+    border: 8px solid var(--snakeBodyColor);
+    box-shadow: 3px 3px 8px #000;
+}
+
+#start-game-screen #start-game-btn:hover,
+#start-game-screen #start-game-btn:hover{
+    opacity: 1;
+    border: 8px solid var(--orangeColor);
+    /* text-shadow: 2px 2px 0px #000; */
+    font-weight: bold;
+}
+
+#start-game-screen #start-game-btn:hover{
+    box-shadow: 3px 3px 8px #000;
+}
+#start-game-screen #start-game-btn:active{
+    box-shadow: unset;
+    transform: scale(0.98);
 }
 
 #game-over{
