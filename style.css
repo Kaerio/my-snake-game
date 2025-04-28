@@ -67,14 +67,14 @@ body{
 
 #presentation-screen-btn{
     position: absolute;
-    bottom: 3%;
+    bottom: 1%;
     left: 0;
     right: 0;
     margin-inline: auto;
     width: fit-content;
     background-color: #000;
     color: #fff;
-    border: 8px solid;
+    border: 0.5em solid;
     font-family: "Audiowide", sans-serif;
     font-size: min(3vw, 2.5vh);
     font-weight: bold;
@@ -87,7 +87,7 @@ body{
 #presentation-screen-btn:hover,
 #presentation-screen-btn:active{
     opacity: 1;
-    border: 8px solid var(--snakeBodyColor);
+    border: 0.5em solid var(--snakeBodyColor);
     /* text-shadow: 2px 2px 0px #000; */
     font-weight: bold;
 }
