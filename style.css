@@ -401,16 +401,16 @@ body{
     box-shadow: 3px 3px 8px #000;
 }
 
-#start-game-screen #start-game-btn:hover,
+/* #start-game-screen #start-game-btn:hover,
 #start-game-screen #start-game-btn:hover{
     opacity: 1;
     border: 8px solid var(--orangeColor);
-    /* text-shadow: 2px 2px 0px #000; */
+    text-shadow: 2px 2px 0px #000;
     font-weight: bold;
-}
+} */
 
 #start-game-screen #start-game-btn:hover{
-    box-shadow: 3px 3px 8px #000;
+    transform: scale(1.02);
 }
 #start-game-screen #start-game-btn:active{
     box-shadow: unset;
