@@ -381,6 +381,7 @@ function createGameOverText(){
         <h2>Game over</h2>
         <p>Score: ${currentScore.toString()}</p>
         <p>Player: ${userName}</p>    
-        <p>Best score: ${highScore.toString()}</p>`
+        <p>Best score: ${highScore.toString()}</p>
+        <button id="restartBtn">Restart</button>`
     return output
 }

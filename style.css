@@ -396,6 +396,26 @@ h1{
     padding-left: 20px;
 }
 
+#game-over #restartBtn{
+    margin: 15px auto;
+    padding: 0.5em 1em;
+    font-size: min(3vw, 4vh);
+    background-color: #fff;
+    color: #000;
+    font-family: "Press Start 2P", system-ui;
+    cursor: pointer;
+    border: 10px solid transparent;
+    
+}
+
+#game-over #restartBtn:hover{
+    opacity: 1;
+    border: 10px solid var(--orangeColor);
+    box-shadow: 5px 5px 5px #000;
+    text-shadow: 2px 2px 0px #000;
+}
+
+
 
 
 
