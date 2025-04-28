@@ -1,75 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Press+Start+2P&display=swap" rel="stylesheet">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Audiowide&family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
     <title>Snake game</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="style.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="style.css" />
     <script src="script.js" defer></script>
-</head>
-<body>
+  </head>
+  <body>
     <div id="presentation-screen">
-        <div class="logo">
-            <img src="image-presentation.png" alt="Presentation screen">
-            <span class="version">V0.2</span>
-            <button id="presentation-screen-btn">Press to Start</button>
-        </div>
-        
+      <div class="logo">
+        <img src="image-presentation.png" alt="Presentation screen" />
+        <span class="version">V0.2</span>
+        <button id="presentation-screen-btn">Press to Start</button>
+      </div>
     </div>
     <div class="instructions-container">
-        <button id="instructions-btn">
-            <span class="instructions-btn-text">Show instructions</span>
-            <span class="instructions-btn-arrow">﹀</span>
-          </button>
-        <ul id="instructions-text">
-            <li>Press the spacebar to start.</li>
-            <li>Toggle fullscreen with this button <img class="btn-screenshot" src="button-img.png" alt="screenshot of the toggle fullscreen button"></li>
-            <li>Use the arrow keys to control the snake and catch the apples.</li>
-            <li><img src="food.png"> shows the current score</li>
-            <li><span>🏆</span> shows the best score from previous games</li>
-        </ul>
+      <button id="instructions-btn">
+        <span class="instructions-btn-text">Show instructions</span>
+        <span class="instructions-btn-arrow">﹀</span>
+      </button>
+      <ul id="instructions-text">
+        <li>
+          Toggle fullscreen with this button
+          <img
+            class="btn-screenshot"
+            src="button-img.png"
+            alt="screenshot of the toggle fullscreen button"
+          />
+        </li>
+        <li>Use the arrow keys to control the snake and catch the apples.</li>
+        <li><img src="food.png" /> shows the current score</li>
+        <li><span>🏆</span> shows the best score from previous games</li>
+      </ul>
     </div>
-    
+
     <div class="game">
-        <p class="player">Player: <span id="user-name-text"></span></p>
-        
-        
-        <div id="board-container" class="minimized"> 
-            <div class="scores">
-                <div class="score-details">
-                    <img src="food.png">
-                    <span id="score">000</span>
-                </div>
-                <button id="fullscreen-toggle-btn">
-                    <i class="fa-solid fa-expand" id="full-screen-icon"></i>
-                    <i class="fa-solid fa-minimize" id="minimize-screen-icon"></i>
-                </button>
-                <div class="score-details">
-                    <span>🏆</span>
-                    <span id="high-score">000</span>
-                </div>                
-            </div> 
-        
-            <form id="username-form">
-                <label for="username-input">Enter your name:</label>
-                <input type="text" id="username-input" required minlength="2"  maxlength="20" />
-                <button type="submit">Submit</button>
-            </form>       
-            <div id="board">
-                <div id="start-game-screen">
-                    <Button id="start-game-btn">Start</Button>
-                </div>
-                <div id="game-over"></div>
-            </div>
+      <p class="player">Player: <span id="user-name-text"></span></p>
+
+      <div id="board-container" class="minimized">
+        <div class="scores">
+          <div class="score-details">
+            <img src="food.png" />
+            <span id="score">000</span>
+          </div>
+          <button id="fullscreen-toggle-btn">
+            <i class="fa-solid fa-expand" id="full-screen-icon"></i>
+            <i class="fa-solid fa-minimize" id="minimize-screen-icon"></i>
+          </button>
+          <div class="score-details">
+            <span>🏆</span>
+            <span id="high-score">000</span>
+          </div>
         </div>
+
+        <form id="username-form">
+          <label for="username-input">Enter your name:</label>
+          <input
+            type="text"
+            id="username-input"
+            required
+            minlength="2"
+            maxlength="20"
+          />
+          <button type="submit">Submit</button>
+        </form>
+        <div id="board">
+          <div id="start-game-screen">
+            <button id="start-game-btn">Start</button>
+          </div>
+          <div id="game-over"></div>
+        </div>
+      </div>
     </div>
 
     <div id="overlay" class="overlay"></div>
 
     <!-- <footer>Created by Mika</footer> -->
-</body>
+  </body>
 </html>
