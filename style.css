@@ -1,404 +1,401 @@
-*, *::before, *::after{
-    box-sizing: border-box;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-:root{
-    --bodyBgColor: rgb(213, 203, 190);
-    --orangeColor: #d6831a;
-    --yellowColor: #fcc215;
-    --snakeBodyColor: #6db144;
-    --presentationScreenBg: rgb(72, 95, 59);
+:root {
+  --bodyBgColor: rgb(213, 203, 190);
+  --orangeColor: #d6831a;
+  --yellowColor: #fcc215;
+  --snakeBodyColor: #6db144;
+  --presentationScreenBg: rgb(72, 95, 59);
 }
 
-body{
-    position:relative;
-    margin: 0;
-    padding: 0;
-    font-family: "Press Start 2P", system-ui;
-    display: flex;
-    justify-content: space-evenly;
-    min-height: 100vh;
-    background-color: var(--bodyBgColor);
-    flex-wrap: wrap;
-    /* margin-bottom: 20px; */
-    /* overflow: hidden; */
+body {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  font-family: "Press Start 2P", system-ui;
+  display: flex;
+  justify-content: space-evenly;
+  min-height: 100vh;
+  background-color: var(--bodyBgColor);
+  flex-wrap: wrap;
+  /* margin-bottom: 20px; */
+  /* overflow: hidden; */
 }
 
-#presentation-screen{
-    /* display: none; */
-    position: fixed;
-    /* background: url('image-presentation.png') center no-repeat;
+#presentation-screen {
+  /* display: none; */
+  position: fixed;
+  /* background: url('image-presentation.png') center no-repeat;
     background-size: contain; */
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: var(--presentationScreenBg);
-    z-index: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    max-width: 100vw;
-    max-height: 100vh;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--presentationScreenBg);
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 100vw;
+  max-height: 100vh;
 }
 
-#presentation-screen .logo{
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: aqua;
+#presentation-screen .logo {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: aqua;
 }
 
-#presentation-screen .logo img{
-    max-width: 100vw;
-    max-height: 100vh;
-    
+#presentation-screen .logo img {
+  max-width: 100vw;
+  max-height: 100vh;
 }
 
-#presentation-screen .logo .version{
-    position: absolute;
-    color: var(--yellowColor);
-    top: 46%;
-    right: 18%;
-    font-family: "Audiowide", sans-serif;
-    font-size: min(4vw, 3vh);
+#presentation-screen .logo .version {
+  position: absolute;
+  color: var(--yellowColor);
+  top: 46%;
+  right: 18%;
+  font-family: "Audiowide", sans-serif;
+  font-size: min(4vw, 3vh);
 }
 
-#presentation-screen-btn{
-    position: absolute;
-    bottom: 1%;
-    left: 0;
-    right: 0;
-    margin-inline: auto;
-    width: fit-content;
-    background-color: #000;
-    color: #fff;
-    border: 0.5em solid;
-    font-family: "Audiowide", sans-serif;
-    font-size: min(3vw, 2.5vh);
-    font-weight: bold;
-    /* text-align: center; */
-    line-height: 1.5;
-    padding: 0.6em 1.2em;
-    cursor: pointer;
+#presentation-screen-btn {
+  position: absolute;
+  bottom: 1%;
+  left: 0;
+  right: 0;
+  margin-inline: auto;
+  width: fit-content;
+  background-color: #000;
+  color: #fff;
+  border: 0.5em solid;
+  font-family: "Audiowide", sans-serif;
+  font-size: min(3vw, 2.5vh);
+  font-weight: bold;
+  /* text-align: center; */
+  line-height: 1.5;
+  padding: 0.6em 1.2em;
+  cursor: pointer;
 }
 
 #presentation-screen-btn:hover,
-#presentation-screen-btn:active{
-    opacity: 1;
-    border: 0.5em solid var(--snakeBodyColor);
-    /* text-shadow: 2px 2px 0px #000; */
-    font-weight: bold;
+#presentation-screen-btn:active {
+  opacity: 1;
+  border: 0.5em solid var(--snakeBodyColor);
+  /* text-shadow: 2px 2px 0px #000; */
+  font-weight: bold;
 }
 
-#presentation-screen-btn:hover{
-    box-shadow: 3px 3px 8px #000;
+#presentation-screen-btn:hover {
+  box-shadow: 3px 3px 8px #000;
 }
-#presentation-screen-btn:active{
-    box-shadow: unset;
-    transform: scale(0.98);
-}
-
-
-.instructions-container{
-    max-width: 500px;
-    padding: 20px 20px 0 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+#presentation-screen-btn:active {
+  box-shadow: unset;
+  transform: scale(0.98);
 }
 
-#instructions-btn{
-    font-family: "Press Start 2P", system-ui;
-    font-size: 1rem;
-    cursor: pointer;
-    border: none;
-    background-color: #000;
-    color: var(--orangeColor);
-    width: 460px;
-    padding-block: 0.5em;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    gap: 8px;
+.instructions-container {
+  max-width: 500px;
+  padding: 20px 20px 0 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+#instructions-btn {
+  font-family: "Press Start 2P", system-ui;
+  font-size: 1rem;
+  cursor: pointer;
+  border: none;
+  background-color: #000;
+  color: var(--orangeColor);
+  width: 460px;
+  padding-block: 0.5em;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
 }
 
 .instructions-btn-arrow {
-    font-weight: bold;
-    display: inline-block;
-    line-height: 1;
-    transition: transform 0.3s ease;
+  font-weight: bold;
+  display: inline-block;
+  line-height: 1;
+  transition: transform 0.3s ease;
 }
 
 #instructions-btn.open .instructions-btn-arrow {
-    transform: rotate(180deg);
+  transform: rotate(180deg);
 }
 
-#instructions-btn:hover{
-    background-color: var(--orangeColor);
-    color: #000;
+#instructions-btn:hover {
+  background-color: var(--orangeColor);
+  color: #000;
 }
 
-#instructions-text{
-    display: none;
-    list-style: square;
-    padding-left: 10px;
-    max-width: 500px;
-    /* list-style-position: inside; */
+#instructions-text {
+  display: none;
+  list-style: square;
+  padding-left: 10px;
+  max-width: 500px;
+  /* list-style-position: inside; */
 }
 
-#instructions-text li{
-    margin-bottom: 20px;
-    line-height: 1.5;
-    color: black;
-    padding-left: 5px;
-    
+#instructions-text li {
+  margin-bottom: 20px;
+  line-height: 1.5;
+  color: black;
+  padding-left: 5px;
 }
 
-#instructions-text li .btn-screenshot{
-    display: inline-block;
-    width: 38px;
+#instructions-text li .btn-screenshot {
+  display: inline-block;
+  width: 38px;
 }
-#instructions-text li img{
-    display: inline-block;
-    width: 26px;
-}
-
-#instructions-text li span{
-    font-size: 20px;
+#instructions-text li img {
+  display: inline-block;
+  width: 26px;
 }
 
-@media (max-width: 505px){
-    #instructions-btn{
-        font-family: "Press Start 2P", system-ui;
-        font-size: 0.7rem;
-        width: 330px;
-        padding-block: 0.5em;
-    }
-
-    #instructions-text{
-        font-size: 0.7rem;
-    }    
+#instructions-text li span {
+  font-size: 20px;
 }
 
-.scores{
-    display: flex;
-    justify-content: space-between;
-    color:var(--orangeColor);
-    font-size: min(3vw, 3vh);
-    /* margin-bottom: 5px; */
-    position: absolute;
-    width: 100%;
-    top: 0;
-    left: 0;
+@media (max-width: 505px) {
+  #instructions-btn {
+    font-family: "Press Start 2P", system-ui;
+    font-size: 0.7rem;
+    width: 330px;
+    padding-block: 0.5em;
+  }
+
+  #instructions-text {
+    font-size: 0.7rem;
+  }
 }
 
-.scores .score-details{
-    display: flex;
-    align-items:end;
-    gap: 10px;
-    background-color: #000;
-    padding: 5px;
+.scores {
+  display: flex;
+  justify-content: space-between;
+  color: var(--orangeColor);
+  font-size: min(3vw, 3vh);
+  /* margin-bottom: 5px; */
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
 }
 
-.scores .score-details img{
-    display: inline-block;
-    width: min(4vw, 4vh);
+.scores .score-details {
+  display: flex;
+  align-items: end;
+  gap: 10px;
+  background-color: #000;
+  padding: 5px;
 }
 
-#fullscreen-toggle-btn{
-    display: flex;
-    align-items: center;
-    text-align: center;    
-    background-color: #000;
-    font-size: min(3vw, 3vh);
-    padding-inline: 10px;
-    cursor: pointer;
-    border: 2px solid rgb(198, 198, 198);
+.scores .score-details img {
+  display: inline-block;
+  width: min(4vw, 4vh);
 }
 
-#fullscreen-toggle-btn:hover{
-    border: 2px solid var(--orangeColor);
+#fullscreen-toggle-btn {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  background-color: #000;
+  font-size: min(3vw, 3vh);
+  padding-inline: 10px;
+  cursor: pointer;
+  border: 2px solid rgb(198, 198, 198);
+}
+
+#fullscreen-toggle-btn:hover {
+  border: 2px solid var(--orangeColor);
 }
 
 .fa-expand,
-.fa-minimize{
-    color: var(--orangeColor);
+.fa-minimize {
+  color: var(--orangeColor);
 }
 
-.fa-minimize{
-    display: none;
+.fa-minimize {
+  display: none;
 }
 
-.player{
-    color: #000;
-    font-size: 20px;
+.player {
+  color: #000;
+  font-size: 20px;
 }
 
-.game{
-    margin-block: 0 10px;
+.game {
+  margin-block: 0 10px;
 }
 
-#board-container{
-    position: relative;
-    background:  url('bg.png') center no-repeat;
-    background-size: contain;
-    aspect-ratio: 1/1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    
+#board-container {
+  position: relative;
+  background: url("bg.png") center no-repeat;
+  background-size: contain;
+  aspect-ratio: 1/1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-#board-container.minimized{  
-    width: auto;
-    height: auto;  
-    /* 140px représente +/- la taille minimum de "instruction + player" à soustraire
+#board-container.minimized {
+  width: auto;
+  height: auto;
+  /* 140px représente +/- la taille minimum de "instruction + player" à soustraire
      pour que le jeu reste contenu dans la fenêtre sans scrolling*/
-    max-height: calc(100vh - 140px);
-    max-width: calc(100vh - 140px);
-    
+  max-height: calc(100vh - 140px);
+  max-width: calc(100vh - 140px);
 }
 
-#board-container.maximized{
-    position: absolute;
-    inset: 0 0 0 0;
-    margin: auto;
-    z-index: 10;
+#board-container.maximized {
+  position: absolute;
+  inset: 0 0 0 0;
+  margin: auto;
+  z-index: 10;
 }
 
-.overlay{
-    display: none;
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;;
-    z-index: 9;
-    background-color: var(--bodyBgColor);
-    background-color: #1e1e1e;
+.overlay {
+  display: none;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9;
+  background-color: var(--bodyBgColor);
+  background-color: #1e1e1e;
 }
 
-#board{
-    position: relative;
-    width: 87%;
-    height: 87%;
-    display: grid;
-    border: 12px solid #2a5520;
-    background-color: #b9823f;
+#board {
+  position: relative;
+  width: 87%;
+  height: 87%;
+  display: grid;
+  border: 12px solid #2a5520;
+  background-color: #b9823f;
 }
 
-#username-form{
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #000;
-    gap: 15px;
-    z-index: 2;
-    color: white;
+#username-form {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  gap: 15px;
+  z-index: 2;
+  color: white;
 }
 
 #username-form input {
-    padding: 8px;
-    font-size: 1rem;
-    width: min(500px, 80%);
-    font-family: "Press Start 2P", system-ui;
-    border: 0;
-    outline: 6px solid transparent;
+  padding: 8px;
+  font-size: 1rem;
+  width: min(500px, 80%);
+  font-family: "Press Start 2P", system-ui;
+  border: 0;
+  outline: 6px solid transparent;
 }
 
-#username-form input:focus{
-    outline: 6px solid var(--orangeColor);
+#username-form input:focus {
+  outline: 6px solid var(--orangeColor);
 }
 
 #username-form button {
-    padding: 8px 16px;
-    font-size: 1rem;
-    cursor: pointer;
-    background-color: var(--orangeColor);
-    border: none;
-    color: white;
-    font-family: "Press Start 2P", system-ui;
+  padding: 8px 16px;
+  font-size: 1rem;
+  cursor: pointer;
+  background-color: var(--orangeColor);
+  border: none;
+  color: white;
+  font-family: "Press Start 2P", system-ui;
 }
 
 #username-form button:hover {
-    background-color: #6db144;
-    color: white;
+  background-color: #6db144;
+  color: white;
 }
 
-.cell{
-    width: 100%;
-    aspect-ratio: 1/1;
-    background-color: transparent;
-    border: 1px solid rgba(87, 99, 80, 0.15);
+.cell {
+  width: 100%;
+  aspect-ratio: 1/1;
+  background-color: transparent;
+  border: 1px solid rgba(87, 99, 80, 0.15);
 }
 
-.snake-body{
-    background: var(--snakeBodyColor);
-    border-radius: 15%;
+.snake-body {
+  background: var(--snakeBodyColor);
+  border-radius: 15%;
 }
 
-.snake-head-down{
-    background: url('snake.png') center no-repeat;
-    background-size: contain;
+.snake-head-down {
+  background: url("snake.png") center no-repeat;
+  background-size: contain;
 }
-.snake-head-up{
-    background: url('snake.png') center no-repeat;
-    background-size: contain;
-    transform: rotate(180deg);
+.snake-head-up {
+  background: url("snake.png") center no-repeat;
+  background-size: contain;
+  transform: rotate(180deg);
 }
-.snake-head-right{
-    background: url('snake.png') center no-repeat;
-    background-size: contain;
-    transform: rotate(-90deg);
+.snake-head-right {
+  background: url("snake.png") center no-repeat;
+  background-size: contain;
+  transform: rotate(-90deg);
 }
-.snake-head-left{
-    background: url('snake.png') center no-repeat;
-    background-size: contain;
-    transform: rotate(90deg);
-}
-
-.food{
-    background: url('food.png') center no-repeat;
-    background-size: contain;
+.snake-head-left {
+  background: url("snake.png") center no-repeat;
+  background-size: contain;
+  transform: rotate(90deg);
 }
 
-#start-game-screen{
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    inset: 0 0 0 0;
-    margin: auto;
-    background-color: rgba(0, 0, 0, 0.3);
-    display: none;
-    align-items: end;
-    justify-content: center;
-    color: white;
-    z-index: 1;
-    /* opacity: 0.4; */
-    font-size: min(3vw, 4vh);
-    text-align: center;
+.food {
+  background: url("food.png") center no-repeat;
+  background-size: contain;
 }
 
-#start-game-screen #start-game-btn{
-    margin-bottom: 20%;
-    font-size: min(3vw, 4vh);
-    font-family: "Press Start 2P", system-ui;
-    
-    padding: 0.5em 1.5em;
-    cursor: pointer;
-    background-color: #fff;
-    opacity: 1;
-    border: 8px solid var(--snakeBodyColor);
-    box-shadow: 3px 3px 8px #000;
+#start-game-screen {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  inset: 0 0 0 0;
+  margin: auto;
+  background-color: rgba(0, 0, 0, 0.3);
+  display: none;
+  align-items: end;
+  justify-content: center;
+  color: white;
+  z-index: 1;
+  /* opacity: 0.4; */
+  font-size: min(3vw, 4vh);
+  text-align: center;
+}
+
+#start-game-screen #start-game-btn {
+  margin-bottom: 20%;
+  font-size: min(3vw, 4vh);
+  font-family: "Press Start 2P", system-ui;
+
+  padding: 0.5em 1.5em;
+  cursor: pointer;
+  background-color: #fff;
+  opacity: 1;
+  border: 8px solid var(--snakeBodyColor);
+  box-shadow: 3px 3px 8px #000;
 }
 
 /* #start-game-screen #start-game-btn:hover,
@@ -409,62 +406,97 @@ body{
     font-weight: bold;
 } */
 
-#start-game-screen #start-game-btn:hover{
-    transform: scale(1.02);
+#start-game-screen #start-game-btn:hover {
+  transform: scale(1.02);
 }
-#start-game-screen #start-game-btn:active{
-    box-shadow: unset;
-    transform: scale(0.98);
+#start-game-screen #start-game-btn:active {
+  box-shadow: unset;
+  transform: scale(0.98);
 }
 
-#game-over{
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    inset: 0 0 0 0;
-    margin: auto;
-    background-color: rgba(0, 0, 0, 1);
+#game-over {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  inset: 0 0 0 0;
+  margin: auto;
+  background-color: rgba(0, 0, 0, 1);
+  display: none;
+  flex-direction: column;
+  /* align-items: center; */
+  justify-content: center;
+  color: white;
+  z-index: 1;
+  opacity: 0.4;
+  font-size: min(3vw, 4vh);
+  text-align: center;
+}
+
+#game-over h2 {
+  margin: 0 0 1em 0;
+}
+
+#game-over p {
+  margin: 0 0 15px 0;
+  text-align: left;
+  padding-left: 20px;
+}
+
+#game-over #restartBtn {
+  margin: 15px auto;
+  padding: 0.5em 1em;
+  font-size: min(3vw, 4vh);
+  background-color: #fff;
+  color: #000;
+  font-family: "Press Start 2P", system-ui;
+  cursor: pointer;
+  border: 10px solid transparent;
+}
+
+#game-over #restartBtn:hover {
+  opacity: 1;
+  border: 10px solid var(--orangeColor);
+  box-shadow: 5px 5px 5px #000;
+  text-shadow: 2px 2px 0px #000;
+}
+
+#virtual-keyboard {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 20;
+  gap: 10px;
+}
+
+.horizontal-arrows {
+  display: flex;
+  gap: 40px;
+}
+
+.arrow {
+  width: 120px;
+  height: 60px;
+  font-size: 2rem;
+  font-family: monospace;
+  border: none;
+  border-radius: 10px;
+  background-color: #000;
+  color: #fff;
+  box-shadow: 2px 2px 6px #000;
+  cursor: pointer;
+}
+
+.arrow:active {
+  transform: scale(0.95);
+  background-color: var(--snakeBodyColor);
+}
+
+@media (min-width: 768px) {
+  #virtual-keyboard {
     display: none;
-    flex-direction: column;
-    /* align-items: center; */
-    justify-content: center;
-    color: white;
-    z-index: 1;
-    opacity: 0.4;
-    font-size: min(3vw, 4vh);
-    text-align: center;
+  }
 }
-
-#game-over h2{
-    margin: 0 0 1em 0;
-}
-
-#game-over p{
-    margin: 0 0 15px 0;
-    text-align: left;
-    padding-left: 20px;
-}
-
-#game-over #restartBtn{
-    margin: 15px auto;
-    padding: 0.5em 1em;
-    font-size: min(3vw, 4vh);
-    background-color: #fff;
-    color: #000;
-    font-family: "Press Start 2P", system-ui;
-    cursor: pointer;
-    border: 10px solid transparent;
-    
-}
-
-#game-over #restartBtn:hover{
-    opacity: 1;
-    border: 10px solid var(--orangeColor);
-    box-shadow: 5px 5px 5px #000;
-    text-shadow: 2px 2px 0px #000;
-}
-
-
-
-
-
