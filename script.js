@@ -14,8 +14,8 @@ const presentationScreenBtb = document.getElementById(
 const usernameForm = document.getElementById("username-form");
 const usernameInput = document.getElementById("username-input");
 const userNameText = document.getElementById("user-name-text");
-const startGameScreen = document.getElementById("start-game-screen");
-const startGameBtn = document.getElementById("start-game-btn");
+let startGameScreen = document.getElementById("start-game-screen");
+let startGameBtn = document.getElementById("start-game-btn");
 const instructionsBtn = document.getElementById("instructions-btn");
 const instructionsBtnText = instructionsBtn.querySelector(
   ".instructions-btn-text"
@@ -33,7 +33,7 @@ const highScoreText = document.getElementById("high-score");
 const fullscreenToggleBtn = document.getElementById("fullscreen-toggle-btn");
 const fullScreenIcon = document.getElementById("full-screen-icon");
 const minimizeScreenIcon = document.getElementById("minimize-screen-icon");
-const gameOverText = document.getElementById("game-over");
+let gameOverText = document.getElementById("game-over");
 const virtualKeyboard = document.getElementById("virtual-keyboard");
 const gamepadBtn = document.getElementById("gamepad-btn");
 
@@ -49,7 +49,13 @@ let isBoardMaximized = false;
 let isVirtualKeyboardVisible = false;
 let currentScore = 0;
 let highScore = Number(localStorage.getItem("highScore")) || 0;
-const snake = [{ x: 10, y: 10 }];
+let snake = [
+  { x: 10, y: 10 },
+  { x: 9, y: 10 },
+  { x: 8, y: 10 },
+  { x: 7, y: 10 },
+  { x: 6, y: 10 },
+];
 let foodPosition = generateFoodPosition();
 let direction = "right";
 let currentSnakeDirection = "right";
@@ -260,14 +266,18 @@ function displayUsernameForm() {
 // ==================================
 
 //Création du Grid initial du pleateau de jeu
-for (let row = 1; row <= gridSize; row++) {
-  for (let col = 1; col <= gridSize; col++) {
-    const cell = document.createElement("div");
-    cell.classList.add("cell");
-    cell.id = `x${col}-y${row}`;
-    board.appendChild(cell);
+function initializeBoard() {
+  for (let row = 1; row <= gridSize; row++) {
+    for (let col = 1; col <= gridSize; col++) {
+      const cell = document.createElement("div");
+      cell.classList.add("cell");
+      cell.id = `x${col}-y${row}`;
+      board.appendChild(cell);
+    }
   }
 }
+
+initializeBoard();
 
 resizeBoardContainer(); // définition initiale du plateau de jeu
 highScoreText.textContent = highScore.toString().padStart(3, "0");
@@ -449,6 +459,9 @@ function gameOver() {
   highScoreText.textContent = highScore.toString().padStart(3, "0");
   gameOverText.style.display = "flex";
   gameOverText.innerHTML = createGameOverText();
+  document.getElementById("restartBtn").addEventListener("click", function () {
+    restart();
+  });
 }
 
 function createGameOverText() {
@@ -459,4 +472,35 @@ function createGameOverText() {
         <p>Best score: ${highScore.toString()}</p>
         <button id="restartBtn">Restart</button>`;
   return output;
+}
+
+function restart() {
+  currentScore = 0;
+  scoreText.textContent = "000";
+  gameOverText.style.display = "none";
+  isGameStarted = false;
+  board.innerHTML = `
+        <div id="start-game-screen">
+            <button id="start-game-btn">Start</button>
+          </div>
+        <div id="game-over"></div>`;
+  initializeBoard();
+  startGameScreen = document.getElementById("start-game-screen");
+  startGameBtn = document.getElementById("start-game-btn");
+  startGameBtn.addEventListener("click", handleStartGameBtn);
+  gameOverText = document.getElementById("game-over");
+  snake = [
+    { x: 10, y: 10 },
+    { x: 9, y: 10 },
+    { x: 8, y: 10 },
+    { x: 7, y: 10 },
+    { x: 6, y: 10 },
+  ];
+  foodPosition = generateFoodPosition();
+  direction = "right";
+  currentSnakeDirection = "right";
+  gameInterval;
+  gameIntervalDelay = 200;
+  draw();
+  startGameScreen.style.display = "flex";
 }

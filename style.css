@@ -510,7 +510,6 @@ body {
   transform: translateX(-50%);
   z-index: 20;
   gap: 10px;
-  opacity: 0.6;
 }
 
 .horizontal-arrows {
