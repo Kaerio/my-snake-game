@@ -286,10 +286,13 @@ body {
 
 #board-container.maximized {
   position: absolute;
-  inset: 0 0 0 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   margin-inline: auto;
   z-index: 10;
-  margin-top: min(7vh, 7vw);
+  /* margin-top: min(7vh, 7vw); */
 }
 
 .overlay {

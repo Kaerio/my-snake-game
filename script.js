@@ -86,11 +86,20 @@ function toggleInstructions() {
 
 //Définition de la dimension du plateau de jeu (avec padding de 30px)
 function resizeBoardContainer() {
-  const padding = isBoardMaximized ? 0 : 30;
+  let padding;
+
+  if (isBoardMaximized && window.innerWidth < 770) {
+    padding = 0;
+  } else if (isBoardMaximized) {
+    padding = scoreDiv.getBoundingClientRect().height;
+  } else {
+    padding = 30;
+  }
   const windowMinDimension =
     Math.min(window.innerWidth, window.innerHeight) - padding;
   boardContainer.style.width = `${windowMinDimension}px`;
   boardContainer.style.height = `${windowMinDimension}px`;
+  boardContainer.style.top = `${scoreDiv.getBoundingClientRect().height}px`;
   //Définition des dimension du grid du jeu
   board.style.gridTemplateColumns = `repeat(${gridSize}, 1fr)`;
   board.style.gridTemplateRows = `repeat(${gridSize}, 1fr)`;
@@ -98,7 +107,6 @@ function resizeBoardContainer() {
 
 function maximizeBoard() {
   isBoardMaximized = true;
-  resizeBoardContainer();
   boardContainer.classList.add("maximized");
   boardContainer.classList.remove("minimized");
   scoreDiv.classList.add("maximized");
@@ -106,6 +114,7 @@ function maximizeBoard() {
   overlayDiv.style.display = "block";
   fullScreenIcon.style.display = "none";
   minimizeScreenIcon.style.display = "inline";
+  resizeBoardContainer();
 }
 
 function minimizeBoard() {
