@@ -114,6 +114,16 @@ function maximizeBoard() {
   overlayDiv.style.display = "block";
   fullScreenIcon.style.display = "none";
   minimizeScreenIcon.style.display = "inline";
+
+  const docEl = document.documentElement;
+  if (docEl.requestFullscreen) {
+    docEl.requestFullscreen();
+  } else if (docEl.webkitRequestFullscreen) {
+    docEl.webkitRequestFullscreen(); // Safari
+  } else if (docEl.msRequestFullscreen) {
+    docEl.msRequestFullscreen(); // IE/Edge
+  }
+
   resizeBoardContainer();
 }
 
@@ -127,6 +137,13 @@ function minimizeBoard() {
   overlayDiv.style.display = "none";
   minimizeScreenIcon.style.display = "none";
   fullScreenIcon.style.display = "inline";
+  if (document.exitFullscreen) {
+    document.exitFullscreen();
+  } else if (document.webkitExitFullscreen) {
+    document.webkitExitFullscreen(); // Safari
+  } else if (document.msExitFullscreen) {
+    document.msExitFullscreen(); // IE/Edge
+  }
 }
 
 function toggleFullScreen() {

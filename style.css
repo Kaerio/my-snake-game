@@ -12,6 +12,11 @@
   --presentationScreenBg: rgb(72, 95, 59);
 }
 
+html {
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+
 body {
   position: relative;
   margin: 0;
