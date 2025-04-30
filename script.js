@@ -25,6 +25,7 @@ const instructionsBtnArrow = instructionsBtn.querySelector(
 );
 const instructionsText = document.getElementById("instructions-text");
 const boardContainer = document.getElementById("board-container");
+const scoreDiv = document.getElementById("score-div");
 const board = document.getElementById("board"); //là où le jeu se déroule
 const overlayDiv = document.getElementById("overlay"); //là où le jeu se déroule
 const scoreText = document.getElementById("score");
@@ -33,6 +34,8 @@ const fullscreenToggleBtn = document.getElementById("fullscreen-toggle-btn");
 const fullScreenIcon = document.getElementById("full-screen-icon");
 const minimizeScreenIcon = document.getElementById("minimize-screen-icon");
 const gameOverText = document.getElementById("game-over");
+const virtualKeyboard = document.getElementById("virtual-keyboard");
+const gamepadBtn = document.getElementById("gamepad-btn");
 
 // ==================================
 // Variables globales
@@ -43,6 +46,7 @@ let IsUserNameSet = userName === "" ? false : true;
 let isGameStarted = false;
 let isPresentationScreenRemoved = false;
 let isBoardMaximized = false;
+let isVirtualKeyboardVisible = false;
 let currentScore = 0;
 let highScore = Number(localStorage.getItem("highScore")) || 0;
 const snake = [{ x: 10, y: 10 }];
@@ -65,6 +69,7 @@ instructionsBtn.addEventListener("click", toggleInstructions);
 window.addEventListener("resize", resizeBoardContainer);
 document.addEventListener("keydown", handleKeyPress);
 fullscreenToggleBtn.addEventListener("click", toggleFullScreen);
+gamepadBtn.addEventListener("click", toggleGamepad);
 
 //Toggle affichage des instructions de jeu
 function toggleInstructions() {
@@ -96,6 +101,8 @@ function maximizeBoard() {
   resizeBoardContainer();
   boardContainer.classList.add("maximized");
   boardContainer.classList.remove("minimized");
+  scoreDiv.classList.add("maximized");
+  board.classList.add("maximized");
   overlayDiv.style.display = "block";
   fullScreenIcon.style.display = "none";
   minimizeScreenIcon.style.display = "inline";
@@ -106,6 +113,8 @@ function minimizeBoard() {
   resizeBoardContainer();
   boardContainer.classList.add("minimized");
   boardContainer.classList.remove("maximized");
+  scoreDiv.classList.remove("maximized");
+  board.classList.remove("maximized");
   overlayDiv.style.display = "none";
   minimizeScreenIcon.style.display = "none";
   fullScreenIcon.style.display = "inline";
@@ -117,6 +126,11 @@ function toggleFullScreen() {
   } else {
     maximizeBoard();
   }
+}
+
+function toggleGamepad() {
+  virtualKeyboard.style.display = isVirtualKeyboardVisible ? "none" : "flex";
+  isVirtualKeyboardVisible = !isVirtualKeyboardVisible;
 }
 
 //Gestion formulaire de choix du nom de joueur

@@ -42,6 +42,14 @@
             alt="screenshot of the toggle fullscreen button"
           />
         </li>
+        <li>
+          Toggle gamepad for mobile with this button
+          <img
+            class="btn-screenshot"
+            src="gamepad-button.png"
+            alt="screenshot of the toggle gamepad button"
+          />
+        </li>
         <li>Use the arrow keys to control the snake and catch the apples.</li>
         <li><img src="food.png" /> shows the current score</li>
         <li><span>🏆</span> shows the best score from previous games</li>
@@ -52,7 +60,7 @@
       <p class="player">Player: <span id="user-name-text"></span></p>
 
       <div id="board-container" class="minimized">
-        <div class="scores">
+        <div id="score-div" class="scores">
           <div class="score-details">
             <img src="food.png" />
             <span id="score">000</span>
@@ -60,6 +68,9 @@
           <button id="fullscreen-toggle-btn">
             <i class="fa-solid fa-expand" id="full-screen-icon"></i>
             <i class="fa-solid fa-minimize" id="minimize-screen-icon"></i>
+          </button>
+          <button id="gamepad-btn">
+            <i id="gamepad" class="fa-solid fa-gamepad"></i>
           </button>
           <div class="score-details">
             <span>🏆</span>
