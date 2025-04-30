@@ -49,12 +49,12 @@ let isBoardMaximized = false;
 let isVirtualKeyboardVisible = false;
 let currentScore = 0;
 let highScore = Number(localStorage.getItem("highScore")) || 0;
-let snake = (snake = [{ x: 10, y: 10 }]);
+let snake = [{ x: 10, y: 10 }];
 let foodPosition = generateFoodPosition();
 let direction = "right";
 let currentSnakeDirection = "right";
 let gameInterval;
-let gameIntervalDelay = 250;
+let gameIntervalDelay = 200;
 
 // localStorage.removeItem('userName')
 
