@@ -49,13 +49,7 @@ let isBoardMaximized = false;
 let isVirtualKeyboardVisible = false;
 let currentScore = 0;
 let highScore = Number(localStorage.getItem("highScore")) || 0;
-let snake = [
-  { x: 10, y: 10 },
-  { x: 9, y: 10 },
-  { x: 8, y: 10 },
-  { x: 7, y: 10 },
-  { x: 6, y: 10 },
-];
+let snake = (snake = [{ x: 10, y: 10 }]);
 let foodPosition = generateFoodPosition();
 let direction = "right";
 let currentSnakeDirection = "right";
@@ -489,13 +483,7 @@ function restart() {
   startGameBtn = document.getElementById("start-game-btn");
   startGameBtn.addEventListener("click", handleStartGameBtn);
   gameOverText = document.getElementById("game-over");
-  snake = [
-    { x: 10, y: 10 },
-    { x: 9, y: 10 },
-    { x: 8, y: 10 },
-    { x: 7, y: 10 },
-    { x: 6, y: 10 },
-  ];
+  snake = [{ x: 10, y: 10 }];
   foodPosition = generateFoodPosition();
   direction = "right";
   currentSnakeDirection = "right";
