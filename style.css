@@ -66,14 +66,14 @@ body {
   max-height: 100vh;
 }
 
-#presentation-screen .logo .version {
+/* #presentation-screen .logo .version {
   position: absolute;
   color: var(--yellowColor);
   top: 46%;
   right: 18%;
   font-family: "Audiowide", sans-serif;
   font-size: min(4vw, 3vh);
-}
+} */
 
 #presentation-screen-btn {
   position: absolute;
@@ -84,7 +84,7 @@ body {
   width: fit-content;
   background-color: #000;
   color: #fff;
-  border: 0.5em solid;
+  border: 0.5em solid var(--snakeBodyColor);
   font-family: "Audiowide", sans-serif;
   font-size: min(3vw, 2.5vh);
   font-weight: bold;
@@ -92,19 +92,9 @@ body {
   line-height: 1.5;
   padding: 0.6em 1.2em;
   cursor: pointer;
-}
-
-#presentation-screen-btn:hover,
-#presentation-screen-btn:active {
-  opacity: 1;
-  border: 0.5em solid var(--snakeBodyColor);
-  /* text-shadow: 2px 2px 0px #000; */
-  font-weight: bold;
-}
-
-#presentation-screen-btn:hover {
   box-shadow: 3px 3px 8px #000;
 }
+
 #presentation-screen-btn:active {
   box-shadow: unset;
   transform: scale(0.98);
@@ -433,10 +423,10 @@ body {
   margin-bottom: 20%;
   font-size: min(3vw, 4vh);
   font-family: "Press Start 2P", system-ui;
-
+  color: #fff;
   padding: 0.5em 1.5em;
   cursor: pointer;
-  background-color: #fff;
+  background-color: #000;
   opacity: 1;
   border: 8px solid var(--snakeBodyColor);
   box-shadow: 3px 3px 8px #000;
