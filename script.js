@@ -54,7 +54,7 @@ let foodPosition = generateFoodPosition();
 let direction = "right";
 let currentSnakeDirection = "right";
 let gameInterval;
-let gameIntervalDelay = 200;
+let gameIntervalDelay = 250;
 
 // localStorage.removeItem('userName')
 
@@ -76,11 +76,11 @@ function toggleInstructions() {
   if (getComputedStyle(instructionsText).display === "none") {
     instructionsText.style.display = "block";
     instructionsBtn.classList.add("open");
-    instructionsBtnText.textContent = "Hide instructions";
+    instructionsBtnText.textContent = "Cacher les instructions";
   } else {
     instructionsText.style.display = "none";
     instructionsBtn.classList.remove("open");
-    instructionsBtnText.textContent = "Show instructions";
+    instructionsBtnText.textContent = "Voir instructions";
   }
 }
 
