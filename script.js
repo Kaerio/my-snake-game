@@ -54,9 +54,7 @@ let foodPosition = generateFoodPosition();
 let direction = "right";
 let currentSnakeDirection = "right";
 let gameInterval;
-let gameIntervalDelay = 200;
-
-// localStorage.removeItem('userName')
+let gameIntervalDelay = 200; //snake initial speed
 
 // ==================================
 // Initialisation (event listeners + setup de la page)
