@@ -251,7 +251,7 @@ body {
 
 #board-container {
   position: relative;
-  background: url("bg.png") center no-repeat;
+  background: url("images/bg.png") center no-repeat;
   background-size: contain;
   aspect-ratio: 1/1;
   display: flex;
@@ -362,27 +362,27 @@ body {
 }
 
 .snake-head-down {
-  background: url("snake.png") center no-repeat;
+  background: url("images/snake.png") center no-repeat;
   background-size: contain;
 }
 .snake-head-up {
-  background: url("snake.png") center no-repeat;
+  background: url("images/snake.png") center no-repeat;
   background-size: contain;
   transform: rotate(180deg);
 }
 .snake-head-right {
-  background: url("snake.png") center no-repeat;
+  background: url("images/snake.png") center no-repeat;
   background-size: contain;
   transform: rotate(-90deg);
 }
 .snake-head-left {
-  background: url("snake.png") center no-repeat;
+  background: url("images/snake.png") center no-repeat;
   background-size: contain;
   transform: rotate(90deg);
 }
 
 .food {
-  background: url("food.png") center no-repeat;
+  background: url("images/food.png") center no-repeat;
   background-size: contain;
 }
 
