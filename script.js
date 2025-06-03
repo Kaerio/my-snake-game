@@ -1,9 +1,3 @@
-//TO DO !!!
-//html language attribute
-//thanks for feedback: DaveDust
-//Ideas: time and speed in lower bar, change username, wall of death,, filigrane "snake Game Ultra" sur background
-//menu of settings, gameTime, number of turns (currentDirection change)
-
 // ==================================
 // Sélection des éléments DOM
 // ==================================
@@ -103,6 +97,7 @@ function resizeBoardContainer() {
   board.style.gridTemplateRows = `repeat(${gridSize}, 1fr)`;
 }
 
+//Mettre le jeu en mode fullscreen
 function maximizeBoard() {
   isBoardMaximized = true;
   boardContainer.classList.add("maximized");
@@ -125,6 +120,7 @@ function maximizeBoard() {
   resizeBoardContainer();
 }
 
+//Quitter le mode fullscreen
 function minimizeBoard() {
   isBoardMaximized = false;
   resizeBoardContainer();
@@ -144,6 +140,7 @@ function minimizeBoard() {
   }
 }
 
+//Toggle le mode full screen/mode réduit
 function toggleFullScreen() {
   if (isBoardMaximized) {
     minimizeBoard();
@@ -152,6 +149,7 @@ function toggleFullScreen() {
   }
 }
 
+//Toggle le gamepad pour mobiles
 function toggleGamepad() {
   virtualKeyboard.style.display = isVirtualKeyboardVisible ? "none" : "flex";
   isVirtualKeyboardVisible = !isVirtualKeyboardVisible;
@@ -169,8 +167,8 @@ function handleUserNameSubmit(event) {
   }
 }
 
+//Si click sur "start" pour lancer le jeu
 function handleStartGameBtn() {
-  //Si Click sur "start" pour lancer le jeu
   if (IsUserNameSet === true && isGameStarted === false) {
     startGame();
   }
@@ -222,16 +220,15 @@ function handleDirectionInput(key) {
   }
 
   // Empêcher au serpent de faire demi-tour sur lui-même
-  if (snake.length > 1) {
-    if (
-      (currentSnakeDirection === "up" && newDirection === "down") ||
-      (currentSnakeDirection === "down" && newDirection === "up") ||
-      (currentSnakeDirection === "left" && newDirection === "right") ||
-      (currentSnakeDirection === "right" && newDirection === "left")
-    ) {
-      return;
-    }
+  if (
+    (currentSnakeDirection === "up" && newDirection === "down") ||
+    (currentSnakeDirection === "down" && newDirection === "up") ||
+    (currentSnakeDirection === "left" && newDirection === "right") ||
+    (currentSnakeDirection === "right" && newDirection === "left")
+  ) {
+    return;
   }
+
   direction = newDirection;
 }
 
@@ -256,7 +253,6 @@ function displayUsernameForm() {
 // ==================================
 // Initialisation setup de la page)
 // ==================================
-
 //Création du Grid initial du pleateau de jeu
 function initializeBoard() {
   for (let row = 1; row <= gridSize; row++) {
@@ -277,14 +273,11 @@ highScoreText.textContent = highScore.toString().padStart(3, "0");
 // ==================================
 // Fonctions du jeu
 // ==================================
-
 function startGame() {
   startGameScreen.style.display = "none";
   isGameStarted = true;
   currentScore = 0;
-  // gameOver()
 
-  // draw()
   gameInterval = setInterval(() => {
     move();
     draw();
@@ -346,6 +339,7 @@ function generateFoodPosition() {
   return { x, y };
 }
 
+//Controle afin que la nourriture ne soit pas générée sur le serpent
 function isFoodInSnake() {
   return snake.some((segment) => {
     return foodPosition.x === segment.x && foodPosition.y === segment.y;

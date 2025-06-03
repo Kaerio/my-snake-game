@@ -24,21 +24,13 @@ body {
   font-family: "Press Start 2P", system-ui;
   display: flex;
   flex-direction: column;
-  /* justify-content: space-evenly;
-  align-items: flex-start; */
   align-items: center;
   min-height: 100vh;
   background-color: var(--bodyBgColor);
-  /* flex-wrap: wrap; */
-  /* margin-bottom: 20px; */
-  /* overflow: hidden; */
 }
 
 #presentation-screen {
-  /* display: none; */
   position: fixed;
-  /* background: url('image-presentation.png') center no-repeat;
-    background-size: contain; */
   top: 0;
   left: 0;
   width: 100vw;
@@ -66,15 +58,6 @@ body {
   max-height: 100vh;
 }
 
-/* #presentation-screen .logo .version {
-  position: absolute;
-  color: var(--yellowColor);
-  top: 46%;
-  right: 18%;
-  font-family: "Audiowide", sans-serif;
-  font-size: min(4vw, 3vh);
-} */
-
 #presentation-screen-btn {
   position: absolute;
   bottom: 1%;
@@ -88,7 +71,6 @@ body {
   font-family: "Audiowide", sans-serif;
   font-size: min(3vw, 2.5vh);
   font-weight: bold;
-  /* text-align: center; */
   line-height: 1.5;
   padding: 0.6em 1.2em;
   cursor: pointer;
@@ -192,7 +174,6 @@ body {
   justify-content: space-between;
   color: var(--orangeColor);
   font-size: min(3vw, 3vh);
-  /* margin-bottom: 5px; */
   position: absolute;
   width: 100%;
   top: 0;
@@ -295,7 +276,6 @@ body {
   bottom: 0;
   margin-inline: auto;
   z-index: 10;
-  /* margin-top: min(7vh, 7vw); */
 }
 
 .overlay {
@@ -418,7 +398,6 @@ body {
   justify-content: center;
   color: white;
   z-index: 1;
-  /* opacity: 0.4; */
   font-size: min(3vw, 4vh);
   text-align: center;
 }
@@ -435,14 +414,6 @@ body {
   border: 8px solid var(--snakeBodyColor);
   box-shadow: 3px 3px 8px #000;
 }
-
-/* #start-game-screen #start-game-btn:hover,
-#start-game-screen #start-game-btn:hover{
-    opacity: 1;
-    border: 8px solid var(--orangeColor);
-    text-shadow: 2px 2px 0px #000;
-    font-weight: bold;
-} */
 
 #start-game-screen #start-game-btn:hover {
   transform: scale(1.02);
@@ -461,7 +432,6 @@ body {
   background-color: rgba(0, 0, 0, 1);
   display: none;
   flex-direction: column;
-  /* align-items: center; */
   justify-content: center;
   color: white;
   z-index: 1;
