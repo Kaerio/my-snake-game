@@ -95,6 +95,10 @@ body {
   box-shadow: 3px 3px 8px #000;
 }
 
+#presentation-screen-btn:hover {
+  scale: 1.02;
+}
+
 #presentation-screen-btn:active {
   box-shadow: unset;
   transform: scale(0.98);
