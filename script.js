@@ -34,6 +34,7 @@ const gamepadBtn = document.getElementById("gamepad-btn");
 // ==================================
 // Variables globales
 // ==================================
+const GAME_INITIAL_SPEED = 300; //snake initial speed
 const gridSize = 20;
 let userName = localStorage.getItem("userName") || "";
 let IsUserNameSet = userName === "" ? false : true;
@@ -48,7 +49,7 @@ let foodPosition = generateFoodPosition();
 let direction = "right";
 let currentSnakeDirection = "right";
 let gameInterval;
-let gameIntervalDelay = 300; //snake initial speed
+let gameIntervalDelay = GAME_INITIAL_SPEED;
 
 // ==================================
 // Initialisation (event listeners + setup de la page)
@@ -479,8 +480,7 @@ function restart() {
   foodPosition = generateFoodPosition();
   direction = "right";
   currentSnakeDirection = "right";
-  gameInterval;
-  gameIntervalDelay = 200;
+  gameIntervalDelay = GAME_INITIAL_SPEED;
   draw();
   startGameScreen.style.display = "flex";
 }
