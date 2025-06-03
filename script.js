@@ -8,8 +8,6 @@ const presentationScreenBtb = document.getElementById(
 const usernameForm = document.getElementById("username-form");
 const usernameInput = document.getElementById("username-input");
 const userNameText = document.getElementById("user-name-text");
-let startGameScreen = document.getElementById("start-game-screen");
-let startGameBtn = document.getElementById("start-game-btn");
 const instructionsBtn = document.getElementById("instructions-btn");
 const instructionsBtnText = instructionsBtn.querySelector(
   ".instructions-btn-text"
@@ -20,14 +18,17 @@ const instructionsBtnArrow = instructionsBtn.querySelector(
 const instructionsText = document.getElementById("instructions-text");
 const boardContainer = document.getElementById("board-container");
 const scoreDiv = document.getElementById("score-div");
-const board = document.getElementById("board"); //là où le jeu se déroule
-const overlayDiv = document.getElementById("overlay"); //là où le jeu se déroule
+const board = document.getElementById("board"); //le plateau de jeu
+const overlayDiv = document.getElementById("overlay"); //Utilisée pour afficher le jeu en fullscreen
+//utilisation de "let" car ces trois éléments sont recréés au restart du plateau de jeu
+let startGameScreen = document.getElementById("start-game-screen");
+let startGameBtn = document.getElementById("start-game-btn");
+let gameOverText = document.getElementById("game-over");
 const scoreText = document.getElementById("score");
 const highScoreText = document.getElementById("high-score");
 const fullscreenToggleBtn = document.getElementById("fullscreen-toggle-btn");
 const fullScreenIcon = document.getElementById("full-screen-icon");
 const minimizeScreenIcon = document.getElementById("minimize-screen-icon");
-let gameOverText = document.getElementById("game-over");
 const virtualKeyboard = document.getElementById("virtual-keyboard");
 const gamepadBtn = document.getElementById("gamepad-btn");
 
