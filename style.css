@@ -461,19 +461,21 @@ body {
   justify-content: center;
   color: white;
   z-index: 1;
-  opacity: 0.4;
   font-size: min(3vw, 4vh);
   text-align: center;
+  opacity: 0.6;
 }
 
 #game-over h2 {
   margin: 0 0 1em 0;
+  opacity: 0.7;
 }
 
 #game-over p {
   margin: 0 0 15px 0;
   text-align: left;
   padding-left: 20px;
+  opacity: 0.7;
 }
 
 #game-over #restartBtn {
@@ -485,12 +487,18 @@ body {
   font-family: "Press Start 2P", system-ui;
   cursor: pointer;
   border: 10px solid transparent;
+  opacity: 1;
+  border: 10px solid var(--orangeColor);
 }
 
 #game-over #restartBtn:hover {
-  opacity: 1;
-  border: 10px solid var(--orangeColor);
-  box-shadow: 5px 5px 5px #000;
+  filter: drop-shadow(5px 5px 10px #000);
+  scale: 1.02;
+  text-shadow: 2px 2px 0px #000;
+}
+
+#game-over #restartBtn:active {
+  scale: 1;
   text-shadow: 2px 2px 0px #000;
 }
 
